@@ -948,4 +948,118 @@
     </script>
 </body>
 </html>
-```
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Check oUt - Ready-to-Cook চিংড়ি</title>
+  <meta property="og:title" content="Check oUt - We Value Our Customers Like Family" />
+  <meta property="og:description" content="ফ্রেশ ও রেডি-টু-কুক চিংড়ি অর্ডার করুন সহজেই।" />
+  <meta property="og:image" content="https://checkoutbd.github.io/checkOut-/logo.png" />
+  <style>
+    * { box-sizing: border-box; font-family: Arial, sans-serif; }
+    body { margin: 0; padding: 16px; background: #f4f7f4; color: #1b2e1b; }
+    .container { max-width: 600px; margin: 0 auto; background: #ffffff; padding: 20px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+    .header { text-align: center; border-bottom: 1px solid #e2ece2; padding-bottom: 14px; margin-bottom: 18px; }
+    .header img { max-width: 120px; height: auto; border-radius: 50%; margin-bottom: 8px; }
+    h1 { margin: 4px 0; font-size: 24px; color: #14532d; }
+    .slogan { margin: 0; font-size: 14px; color: #4b634b; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+    th, td { border: 1px solid #dce6dc; padding: 10px; text-align: left; font-size: 14px; }
+    th { background: #eaf4ea; color: #14532d; }
+    .order-box h2 { font-size: 18px; margin-bottom: 12px; color: #14532d; }
+    label { display: block; margin-top: 10px; margin-bottom: 4px; font-size: 14px; font-weight: bold; }
+    input, select, textarea { width: 100%; padding: 10px; border: 1px solid #b8c9b8; border-radius: 8px; font-size: 14px; }
+    button { width: 100%; margin-top: 16px; padding: 12px; background: #15803d; color: #fff; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; }
+    button:hover { background: #166534; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <img src="logo.png" alt="Check oUt Logo" onerror="this.style.display='none'" />
+      <h1>Check oUt</h1>
+      <p class="slogan">We Value Our Customers Like Family</p>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>পণ্য</th>
+          <th>ওজন / ইউনিট</th>
+          <th>দাম</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>বাগদা চিংড়ি (রেডি-টু-কুক)</td>
+          <td>১ কেজি</td>
+          <td>১২০০ টাকা</td>
+        </tr>
+        <tr>
+          <td>গলদা / ছাটি চিংড়ি</td>
+          <td>১ কেজি</td>
+          <td>১৪০০ টাকা</td>
+        </tr>
+        <tr>
+          <td>হরিনা চিংড়ি</td>
+          <td>১ কেজি</td>
+          <td>১১০০ টাকা</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="order-box">
+      <h2>অর্ডার ফর্ম</h2>
+      <form id="orderForm">
+        <label for="customerName">আপনার নাম</label>
+        <input type="text" id="customerName" required placeholder="নাম লিখুন" />
+
+        <label for="customerPhone">মোবাইল নম্বর</label>
+        <input type="tel" id="customerPhone" required placeholder="01XXXXXXXXX" />
+
+        <label for="productSelect">পণ্য ও প্যাকেজ</label>
+        <select id="productSelect">
+          <option value="বাগদা চিংড়ি (১ কেজি - ১২০০ টাকা)">বাগদা চিংড়ি (১ কেজি - ১২০০ টাকা)</option>
+          <option value="গলদা / ছাটি চিংড়ি (১ কেজি - ১৪০০ টাকা)">গলদা / ছাটি চিংড়ি (১ কেজি - ১৪০০ টাকা)</option>
+          <option value="হরিনা চিংড়ি (১ কেজি - ১১০০ টাকা)">হরিনা চিংড়ি (১ কেজি - ১১০০ টাকা)</option>
+        </select>
+
+        <label for="quantity">পরিমাণ (কেজি / প্যাক)</label>
+        <input type="number" id="quantity" min="1" value="1" required />
+
+        <label for="address">ডেলিভারির ঠিকানা</label>
+        <textarea id="address" rows="3" required placeholder="বাসা/রোড, এলাকা, থানা/জেলা লিখুন"></textarea>
+
+        <button type="submit">WhatsApp-এ অর্ডার পাঠান</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const whatsappNumber = "8801XXXXXXXXX"; // এখানে 880সহ আপনার WhatsApp নম্বর বসান
+
+    document.getElementById("orderForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const name = document.getElementById("customerName").value.trim();
+      const phone = document.getElementById("customerPhone").value.trim();
+      const product = document.getElementById("productSelect").value;
+      const qty = document.getElementById("quantity").value;
+      const address = document.getElementById("address").value.trim();
+
+      const message =
+        `নতুন অর্ডার - Check oUt\n` +
+        `নাম: ${name}\n` +
+        `ফোন: ${phone}\n` +
+        `পণ্য: ${product}\n` +
+        `পরিমাণ: ${qty}\n` +
+        `ঠিকানা: ${address}`;
+
+      const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+      window.open(url, "_blank");
+    });
+  </script>
+</body>
+</html>
+
