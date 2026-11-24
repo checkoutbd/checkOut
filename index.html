@@ -1,954 +1,4 @@
 <!DOCTYPE html>
-<html lang="bn" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Check oUt | সাতক্ষীরার তাজা Ready-to-Cook চিংড়ি ও অর্গানিক ফুড</title>
-    
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts: Hind Siliguri & Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Lucide Icons CDN -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Hind Siliguri', 'Inter', 'sans-serif'],
-                        en: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        ocean: {
-                            DEFAULT: '#0f4c5c',
-                            dark: '#09323d',
-                            light: '#e6f4f7',
-                        },
-                        emeraldBrand: {
-                            DEFAULT: '#065f46',
-                            light: '#ecfdf5',
-                        },
-                        coral: {
-                            DEFAULT: '#e36414',
-                            hover: '#c9530b',
-                            light: '#fff4ed',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-
-    <style>
-        body {
-            font-family: 'Hind Siliguri', 'Inter', sans-serif;
-            background-color: #f8fafc;
-        }
-        .font-en {
-            font-family: 'Inter', sans-serif;
-        }
-        /* Smooth Drawer Transition */
-        .drawer-enter {
-            transform: translateX(100%);
-        }
-        .drawer-open {
-            transform: translateX(0);
-        }
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f5f9;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #0f4c5c;
-            border-radius: 9999px;
-        }
-    </style>
-</head>
-<body class="text-slate-800 antialiased selection:bg-ocean selection:text-white">
-
-    <!-- =========================================================================
-         🛠️ GITHUB EASY CUSTOMIZATION (STORE_CONFIG)
-         আপনার GitHub মোবাইল অ্যাপ বা ব্রাউজার থেকে এই অংশের তথ্যগুলো পরিবর্তন করলেই
-         পুরো ওয়েবসাইটের নম্বর, ডেলিভারি চার্জ, অফার এবং পণ্যের দাম আপডেট হয়ে যাবে।
-         ========================================================================= -->
-    <script>
-        const STORE_CONFIG = {
-            brandName: "Check oUt",
-            slogan: "We value our customer like family member",
-            whatsappNumber: "8801792103563, // আপনার WhatsApp নম্বর (880 সহ লিখুন, কোনো '+' বা স্পেস দেবেন না)
-            displayPhone: "01792103563, // ওয়েবসাইটে দেখানোর ফোন নম্বর
-            facebookUrl: ", /https://www.facebook.com/share/1E5a5Uwhhaআপনার ফেসবুক পেজের লিংক
-            deliveryChargeDhaka: 80         // ঢাকা সিটির ভেতরে ডেলিভারি চার্জ (টাকা)
-            freeDeliveryMinAmount: 2000      // কত টাকার বেশি অর্ডার করলে ডেলিভারি ফ্রি হবে
-            announcementText: "🎉 স্পেশাল অফার: 2000৳+ অর্ডারে ঢাকা শহরে হোম ডেলিভারি একদম ফ্রি! সরাসরি সাতক্ষীরার ঘের থেকে সংগৃহীত ১০০% ফরমালিনমুক্ত চিংড়ি।",
-            
-            // পণ্যের তালিকা (নতুন পণ্য যোগ করতে বা দাম/ছবি বদলাতে নিচের অংশ এডিট করুন)
-            products: [
-                {
-                    id: "bagda-cleaned",
-                    name: "Satkhira Bagda Shrimp (Ready-to-Cook)",
-                    subtitleBn: "সাতক্ষীরার তাজা বাগদা চিংড়ি (সম্পূর্ণ পরিষ্কার করা)",
-                    category: "shrimp", // 'shrimp' অথবা 'organic'
-                    badge: "১০০% পরিষ্কার করা",
-                    badgeStyle: "bg-emeraldBrand text-white",
-                    description: "সাতক্ষীরার ঘের থেকে সরাসরি সংগৃহীত, মাথা ও খোসা ছাড়ানো এবং রগ পরিষ্কার করা Ready-to-Cook বাগদা চিংড়ি। প্যাকেট খুলে সরাসরি রান্না করুন।",
-                    image: "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?auto=format&fit=crop&w=700&q=80",
-                    inStock: true,
-                    prices: {
-                        "250g": 320,
-                        "500g": 620,
-                        "1kg": 1200
-                    }
-                },
-                {
-                    id: "galda-chati",
-                    name: "Satkhira Galda / Chati Prawn (Cleaned)",
-                    subtitleBn: "প্রিমিয়াম গলদা / চাটি চিংড়ি (রেডি-টু-কুক)",
-                    category: "shrimp",
-                    badge: "বেস্ট সেলার",
-                    badgeStyle: "bg-coral text-white",
-                    description: "বড় সাইজের রসালো গলদা/চাটি চিংড়ি। সম্পূর্ণ হাইজেনিক উপায়ে প্রসেস ও পরিষ্কার করে এয়ার-টাইট ফুড-গ্রেড প্যাকেটে সংরক্ষিত।",
-                    image: "https://images.unsplash.com/photo-1625943553852-781c6dd46faa?auto=format&fit=crop&w=700&q=80",
-                    inStock: true,
-                    prices: {
-                        "250g": 400,
-                        "500g": 800,
-                        "1kg": 1600,
-                    }
-                },
-                {
-                    id: "horina-shrimp",
-                    name: "Deshi Horina Shrimp (Ready-to-Cook)",
-                    subtitleBn: "দেশি হরিণা চিংড়ি (খোসা ছাড়ানো ও পরিষ্কার)",
-                    category: "shrimp",
-                    badge: "জনপ্রিয়",
-                    badgeStyle: "bg-ocean text-white",
-                    description: "ভুনা, ভর্তা বা সবজির সাথে রান্নার জন্য সেরা দেশি হরিণা চিংড়ি। কোনো প্রকার কেমিক্যাল বা ফরমালিন ছাড়া প্রাকৃতিক বরফে সংরক্ষিত।",
-                    image: "https://images.unsplash.com/photo-1559737558-2f5a35f4523b?auto=format&fit=crop&w=700&q=80",
-                    inStock: true,
-                    prices: {
-                        "250g": 280
-                        "500g": 550
-                        "1kg": 1100
-                    }
-                },
-                {
-                    id: "sundarbans-honey",
-                    name: "Sundarbans Raw Organic Honey",
-                    subtitleBn: "সুন্দরবনের খাঁটি প্রাকৃতিক মধু (চিনিমুক্ত)",
-                    category: "organic",
-                    badge: "১০০% অর্গানিক",
-                    badgeStyle: "bg-amber-600 text-white",
-                    description: "সুন্দরবনের মৌয়ালদের কাছ থেকে সরাসরি সংগৃহীত খলিশা ও গরান ফুলের প্রাকৃতিক কাঁচা মধু। কোনো প্রকার হিট প্রসেসিং করা হয়নি।",
-                    image: "https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=700&q=80",
-                    inStock: true,
-                    prices: {
-                        "250g": 280,
-                        "500g": 540,
-                        "1kg": 1050
-                    }
-                },
-        {
-  
-                   }
-                }
-            ]
-        };
-    </script>
-
-    <!-- 1. Top Announcement Bar -->
-    <div class="bg-ocean-dark text-white text-center py-2 px-4 text-xs sm:text-sm font-medium tracking-wide">
-        <p id="top-announcement-text"></p>
-    </div>
-
-    <!-- 2. Sticky Navbar -->
-    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16 sm:h-20">
-                <!-- Brand Logo & Slogan -->
-                <a href="#" class="flex items-center gap-3 group">
-                    <!-- Stylized Shrimp & Organic Emblem -->
-                    <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-br from-ocean to-emeraldBrand flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform relative">
-                        <svg class="w-7 h-7 text-orange-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M11 15h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 17"/>
-                            <path d="m7 21 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9"/>
-                            <path d="m2 16 6 6"/>
-                            <circle cx="16" cy="9" r="2.5" class="fill-orange-400 stroke-none"/>
-                        </svg>
-                        <span class="absolute -top-1 -right-1 w-3.5 h-3.5 bg-emerald-400 border-2 border-white rounded-full"></span>
-                    </div>
-                    <div>
-                        <div class="flex items-center gap-1.5">
-                            <span id="nav-brand-title" class="font-en font-extrabold text-2xl sm:text-3xl tracking-tight text-ocean">Check oUt</span>
-                        </div>
-                        <p id="nav-brand-slogan" class="font-en text-[10px] sm:text-xs font-medium text-emeraldBrand -mt-1">We value our customer like family member</p>
-                    </div>
-                </a>
-
-                <!-- Desktop Navigation Links -->
-                <nav class="hidden md:flex items-center gap-8 font-medium text-slate-700">
-                    <a href="#catalog" class="hover:text-ocean transition">আমাদের পণ্য</a>
-                    <a href="#why-us" class="hover:text-ocean transition">কেন Check oUt সেরা?</a>
-                    <a href="#footer" class="hover:text-ocean transition">যোগাযোগ</a>
-                </nav>
-
-                <!-- Cart Button -->
-                <div class="flex items-center gap-2 sm:gap-3">
-                    <a id="nav-call-btn" href="tel:+8801700000000" class="hidden sm:inline-flex items-center gap-1.5 text-sm font-semibold text-ocean bg-ocean-light hover:bg-teal-100 px-3.5 py-2 rounded-full transition">
-                        <i data-lucide="phone-call" class="w-4 h-4"></i>
-                        <span id="nav-phone-display" class="font-en">+880 1700-000000</span>
-                    </a>
-
-                    <button onclick="openCartDrawer()" class="relative inline-flex items-center gap-2 bg-coral hover:bg-coral-hover text-white px-4 py-2.5 rounded-full font-bold text-sm sm:text-base shadow-md transition active:scale-95">
-                        <i data-lucide="shopping-bag" class="w-5 h-5"></i>
-                        <span>অর্ডার কার্ট</span>
-                        <span id="header-cart-badge" class="bg-white text-coral font-en font-extrabold text-xs min-w-[22px] h-[22px] px-1.5 rounded-full flex items-center justify-center shadow-sm">0</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- 3. Hero Section -->
-    <section class="relative overflow-hidden bg-gradient-to-br from-ocean-dark via-ocean to-emeraldBrand text-white py-12 sm:py-20">
-        <!-- Subtle Background Glow -->
-        <div class="absolute -top-24 -right-24 w-96 h-96 bg-coral/20 rounded-full blur-3xl pointer-events-none"></div>
-        <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-emerald-400/15 rounded-full blur-3xl pointer-events-none"></div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-                <!-- Left Text Content -->
-                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-                    <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium text-teal-100">
-                        <span class="w-2 h-2 rounded-full bg-orange-400 animate-ping"></span>
-                        <span>সাতক্ষীরার ঘের ও সুন্দরবন থেকে সরাসরি সংগৃহীত</span>
-                    </div>
-
-                    <h1 class="text-3xl sm:text-5xl font-bold leading-tight">
-                        রান্নার ঝামেলা ছাড়াই তাজা <span class="text-orange-300">Ready-to-Cook চিংড়ি</span> ও খাঁটি অর্গানিক ফুড!
-                    </h1>
-
-                    <p class="text-base sm:text-lg text-teal-50/90 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                        সাতক্ষীরার সেরা ঘেরের <strong>বাগদা, গলদা (চাটি) ও হরিণা চিংড়ি</strong>—সম্পূর্ণ মাথা ও খোসা ছাড়িয়ে পরিষ্কার করা এবং ১০০% কেমিক্যালমুক্ত। সাথে পাচ্ছেন সুন্দরবনের খাঁটি মধু ও তাজা কেওড়া ফল।
-                    </p>
-
-                    <!-- Brand Slogan Card -->
-                    <div class="bg-white/10 border-l-4 border-coral p-3.5 sm:p-4 rounded-r-2xl max-w-xl mx-auto lg:mx-0 text-left">
-                        <p class="font-en italic font-bold text-orange-200 text-base sm:text-lg">
-                            "<span id="hero-slogan-text">We value our customer like family member</span>"
-                        </p>
-                        <p class="text-xs sm:text-sm text-teal-100 mt-0.5">
-                            নিজের পরিবারের জন্য আমরা যেমন খাঁটি ও পরিষ্কার খাবার বেছে নিই, ঠিক তেমনটাই পৌঁছে দিই আপনার দরজায়।
-                        </p>
-                    </div>
-
-                    <!-- CTA Buttons -->
-                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-2">
-                        <a href="#catalog" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-coral hover:bg-coral-hover text-white font-bold text-base sm:text-lg px-7 py-3.5 rounded-2xl shadow-lg transition transform hover:-translate-y-0.5">
-                            <span>পণ্যগুলো দেখুন</span>
-                            <i data-lucide="arrow-down" class="w-5 h-5"></i>
-                        </a>
-                        <a id="hero-wa-direct" href="#" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/15 hover:bg-white/25 border border-white/30 text-white font-semibold text-base sm:text-lg px-6 py-3.5 rounded-2xl transition">
-                            <i data-lucide="message-circle" class="w-5 h-5 text-green-300"></i>
-                            <span>সরাসরি WhatsApp কথা বলুন</span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Right Feature Visual Card -->
-                <div class="lg:col-span-5">
-                    <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white/15 bg-ocean-dark">
-                        <img src="https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?auto=format&fit=crop&w=800&q=85" 
-                             alt="Check oUt Satkhira Cleaned Shrimp" 
-                             onerror="this.src='https://placehold.co/600x450/0f4c5c/ffffff?text=Check+oUt+Fresh+Shrimp'"
-                             class="w-full h-64 sm:h-80 object-cover">
-                        <div class="p-5 sm:p-6 bg-gradient-to-t from-ocean-dark via-ocean-dark/95 to-ocean-dark/85">
-                            <div class="flex items-center justify-between gap-2 mb-2">
-                                <span class="bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 text-xs font-bold px-3 py-1 rounded-full">
-                                    ✓ ১০০% ফরমালিন মুক্ত
-                                </span>
-                                <span class="bg-orange-500/20 text-orange-300 border border-orange-400/30 text-xs font-bold px-3 py-1 rounded-full">
-                                    ❄ কোল্ড-চেইন প্যাক
-                                </span>
-                            </div>
-                            <h3 class="text-lg sm:text-xl font-bold text-white">প্যাকেট খুলুন আর সরাসরি রান্না করুন!</h3>
-                            <p class="text-xs sm:text-sm text-teal-100/80 mt-1">
-                                মাছ কাটা ও বাছার কোনো ঝামেলা নেই। এয়ার-টাইট ফুড-গ্রেড প্যাকেটে ডিপ ফ্রিজে সংরক্ষণযোগ্য।
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 4. Product Catalog & Category Filter Section -->
-    <section id="catalog" class="py-14 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
-            <span class="text-coral font-bold text-xs sm:text-sm uppercase tracking-wider">আমাদের কালেকশন</span>
-            <h2 class="text-2xl sm:text-4xl font-bold text-slate-900 mt-1">তাজা চিংড়ি ও অর্গানিক পণ্যসমূহ</h2>
-            <p class="text-slate-600 mt-2 text-sm sm:text-base">
-                পছন্দের ওজন (২৫০ গ্রাম, ৫০০ গ্রাম বা ১ কেজি) সিলেক্ট করে অর্ডার কার্টে যোগ করুন।
-            </p>
-        </div>
-
-        <!-- Category Filter Tabs -->
-        <div class="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 mb-10">
-            <button onclick="filterProducts('all')" id="tab-all" class="filter-tab active bg-ocean text-white px-5 py-2.5 rounded-full text-sm sm:text-base font-bold shadow-sm transition">
-                সব পণ্য (All)
-            </button>
-            <button onclick="filterProducts('shrimp')" id="tab-shrimp" class="filter-tab bg-white text-slate-700 hover:bg-ocean-light border border-slate-200 px-5 py-2.5 rounded-full text-sm sm:text-base font-bold transition">
-                🦐 Ready-to-Cook চিংড়ি
-            </button>
-            <button onclick="filterProducts('organic')" id="tab-organic" class="filter-tab bg-white text-slate-700 hover:bg-ocean-light border border-slate-200 px-5 py-2.5 rounded-full text-sm sm:text-base font-bold transition">
-                🍯 অর্গানিক ও সিজনাল
-            </button>
-        </div>
-
-        <!-- Product Grid -->
-        <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            <!-- Dynamically rendered from STORE_CONFIG -->
-        </div>
-    </section>
-
-    <!-- 5. Why Choose Check oUt Section -->
-    <section id="why-us" class="py-14 sm:py-20 bg-ocean-light/60 border-y border-teal-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-12">
-                <span class="text-emeraldBrand font-bold text-xs sm:text-sm uppercase tracking-wider">আমাদের অঙ্গীকার</span>
-                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mt-1">কেন <span class="font-en text-ocean">Check oUt</span>-এর ওপর ভরসা রাখবেন?</h2>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Card 1 -->
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-teal-100 hover:shadow-md transition">
-                    <div class="w-12 h-12 rounded-2xl bg-ocean-light text-ocean flex items-center justify-center mb-4">
-                        <i data-lucide="map-pin" class="w-6 h-6"></i>
-                    </div>
-                    <h3 class="font-bold text-lg text-slate-900 mb-1.5">সরাসরি সাতক্ষীরার ঘের থেকে</h3>
-                    <p class="text-sm text-slate-600 leading-relaxed">
-                        মধ্যস্বত্বভোগী ছাড়াই সরাসরি সাতক্ষীরার বাছাইকৃত ঘের ও সুন্দরবন থেকে সংগৃহীত শতভাগ আসল পণ্য।
-                    </p>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-teal-100 hover:shadow-md transition">
-                    <div class="w-12 h-12 rounded-2xl bg-emeraldBrand-light text-emeraldBrand flex items-center justify-center mb-4">
-                        <i data-lucide="shield-check" class="w-6 h-6"></i>
-                    </div>
-                    <h3 class="font-bold text-lg text-slate-900 mb-1.5">কেমিক্যাল ও ফরমালিন মুক্ত</h3>
-                    <p class="text-sm text-slate-600 leading-relaxed">
-                        কোনো ক্ষতিকর কেমিক্যাল বা ফরমালিন ব্যবহার করা হয় না; প্রাকৃতিক বরফ ও সঠিক তাপমাত্রায় সংরক্ষিত।
-                    </p>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-teal-100 hover:shadow-md transition">
-                    <div class="w-12 h-12 rounded-2xl bg-coral-light text-coral flex items-center justify-center mb-4">
-                        <i data-lucide="sparkles" class="w-6 h-6"></i>
-                    </div>
-                    <h3 class="font-bold text-lg text-slate-900 mb-1.5">সম্পূর্ণ পরিষ্কার ও রেডি-টু-কুক</h3>
-                    <p class="text-sm text-slate-600 leading-relaxed">
-                        মাথা, খোসা ও ময়লা পরিষ্কার করে হাইজেনিক উপায়ে প্যাক করা, যা আপনার রান্নার সময় বাঁচায়।
-                    </p>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-teal-100 hover:shadow-md transition">
-                    <div class="w-12 h-12 rounded-2xl bg-sky-50 text-sky-700 flex items-center justify-center mb-4">
-                        <i data-lucide="truck" class="w-6 h-6"></i>
-                    </div>
-                    <h3 class="font-bold text-lg text-slate-900 mb-1.5">দ্রুত হোম ডেলিভারি</h3>
-                    <p class="text-sm text-slate-600 leading-relaxed">
-                        ধানমন্ডি, জিগাতলা, পিলখানাসহ পুরো ঢাকা শহরে দ্রুততম সময়ে ক্যাশ অন ডেলিভারিতে পৌঁছে দিই।
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 6. Clean Footer -->
-    <footer id="footer" class="bg-ocean-dark text-teal-100 pt-12 pb-24 sm:pb-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pb-8 border-b border-white/10">
-                <!-- Brand Col -->
-                <div class="space-y-3">
-                    <span class="font-en font-extrabold text-2xl text-white">Check oUt</span>
-                    <p class="font-en italic text-orange-300 text-sm">"We value our customer like family member"</p>
-                    <p class="text-xs sm:text-sm text-teal-100/75 leading-relaxed">
-                        সাতক্ষীরার তাজা Ready-to-Cook চিংড়ি এবং সুন্দরবনের খাঁটি অর্গানিক ফুড বিশ্বস্ততার সাথে আপনার পরিবারের কাছে পৌঁছে দেওয়াই আমাদের লক্ষ্য।
-                    </p>
-                </div>
-
-                <!-- Contact Col -->
-                <div class="space-y-3">
-                    <h4 class="text-white font-bold text-base">যোগাযোগ ও ডেলিভারি এরিয়া</h4>
-                    <ul class="space-y-2 text-xs sm:text-sm text-teal-100/80">
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="map-pin" class="w-4 h-4 text-orange-300 shrink-0"></i>
-                            <span>ধানমন্ডি, জিগাতলা, পিলখানা ও সমগ্র ঢাকা সিটি</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="phone" class="w-4 h-4 text-orange-300 shrink-0"></i>
-                            <a id="footer-phone-link" href="tel:+8801700000000" class="font-en hover:text-white">+880 1700-000000</a>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="message-circle" class="w-4 h-4 text-green-400 shrink-0"></i>
-                            <a id="footer-wa-link" href="#" target="_blank" class="hover:text-white">WhatsApp অর্ডার হেল্পলাইন</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Social Col -->
-                <div class="space-y-3">
-                    <h4 class="text-white font-bold text-base">আমাদের সাথে যুক্ত থাকুন</h4>
-                    <p class="text-xs sm:text-sm text-teal-100/75">নতুন স্টক ও সিজনাল অফারের আপডেট পেতে ফেসবুক পেজে যুক্ত থাকুন।</p>
-                    <a id="footer-fb-link" href="https://facebook.com" target="_blank" class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-4 py-2.5 rounded-xl text-sm font-semibold transition">
-                        <i data-lucide="facebook" class="w-4 h-4 text-sky-300"></i>
-                        <span>Check oUt Facebook Page</span>
-                    </a>
-                </div>
-            </div>
-
-            <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-teal-200/60 gap-2">
-                <p>&copy; <span id="footer-year">2026</span> <strong class="text-white font-en">Check oUt</strong>. সর্বস্বত্ব সংরক্ষিত।</p>
-                <p>100% Chemical-Free Satkhira Shrimp & Organic Products</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Mobile Sticky Bottom Cart Bar (Appears when items are in cart) -->
-    <div id="mobile-sticky-cart" class="fixed bottom-3 inset-x-3 z-30 sm:hidden hidden">
-        <button onclick="openCartDrawer()" class="w-full bg-coral text-white py-3.5 px-5 rounded-2xl shadow-2xl flex items-center justify-between font-bold border border-orange-300/40">
-            <div class="flex items-center gap-2.5">
-                <span id="mobile-bar-count" class="bg-white text-coral font-en font-extrabold text-xs px-2.5 py-1 rounded-full">0</span>
-                <span class="text-sm">অর্ডার কার্ট দেখুন</span>
-            </div>
-            <div class="flex items-center gap-1.5">
-                <span id="mobile-bar-total" class="font-en text-base">৳0</span>
-                <i data-lucide="chevron-right" class="w-4 h-4"></i>
-            </div>
-        </button>
-    </div>
-
-    <!-- Custom Toast Feedback -->
-    <div id="toast-box" class="fixed top-20 right-4 z-50 transform translate-x-[120%] opacity-0 transition-all duration-300 bg-slate-900 text-white px-4 py-3 rounded-2xl shadow-xl border-l-4 border-coral flex items-center gap-3 max-w-xs sm:max-w-sm">
-        <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-400 shrink-0"></i>
-        <p id="toast-text" class="text-xs sm:text-sm font-medium"></p>
-    </div>
-
-    <!-- =========================================================================
-         🛒 SLIDE-OVER SHOPPING CART DRAWER
-         ========================================================================= -->
-    <div id="cart-drawer-wrapper" class="fixed inset-0 z-50 hidden" role="dialog" aria-modal="true">
-        <!-- Dark Backdrop -->
-        <div onclick="closeCartDrawer()" id="cart-backdrop" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs transition-opacity opacity-0"></div>
-
-        <!-- Slide-over Panel -->
-        <div class="fixed inset-y-0 right-0 flex max-w-full pl-10">
-            <div id="cart-drawer-panel" class="w-screen max-w-md transform transition-transform duration-300 ease-in-out drawer-enter bg-white shadow-2xl flex flex-col h-full">
-                
-                <!-- Drawer Header -->
-                <div class="bg-ocean px-5 py-4 text-white flex items-center justify-between shrink-0">
-                    <div class="flex items-center gap-2.5">
-                        <i data-lucide="shopping-bag" class="w-5 h-5 text-orange-300"></i>
-                        <div>
-                            <h3 class="font-bold text-base sm:text-lg leading-none">আপনার অর্ডার কার্ট</h3>
-                            <span class="font-en text-[11px] text-teal-200">Check oUt Checkout</span>
-                        </div>
-                    </div>
-                    <button onclick="closeCartDrawer()" class="w-8 h-8 rounded-full bg-white/15 hover:bg-white/25 flex items-center justify-center text-white transition">
-                        <i data-lucide="x" class="w-5 h-5"></i>
-                    </button>
-                </div>
-
-                <!-- Drawer Scrollable Content -->
-                <div class="flex-1 overflow-y-auto p-5 space-y-5">
-                    <!-- Cart Items List -->
-                    <div id="drawer-items-list" class="space-y-3">
-                        <!-- Items injected via JS -->
-                    </div>
-
-                    <!-- Bill Summary Card -->
-                    <div id="drawer-summary" class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2 text-sm hidden">
-                        <div class="flex justify-between text-slate-600">
-                            <span>পণ্যের মূল্য (Subtotal):</span>
-                            <span id="drawer-subtotal" class="font-en font-semibold">৳0</span>
-                        </div>
-                        <div class="flex justify-between text-slate-600">
-                            <span>ডেলিভারি চার্জ (ঢাকা):</span>
-                            <span id="drawer-delivery" class="font-en font-semibold">৳60</span>
-                        </div>
-                        <p id="drawer-free-delivery-msg" class="text-xs text-emeraldBrand font-medium"></p>
-                        <div class="border-t border-slate-200 pt-2 flex justify-between text-base font-bold text-slate-900">
-                            <span>সর্বমোট বিল:</span>
-                            <span id="drawer-total" class="font-en text-ocean text-lg">৳0</span>
-                        </div>
-                    </div>
-
-                    <!-- Customer Details Form -->
-                    <form id="drawer-order-form" onsubmit="submitOrderToWhatsApp(event)" class="space-y-3.5 hidden">
-                        <div class="border-t border-slate-200 pt-4">
-                            <h4 class="font-bold text-slate-800 text-sm sm:text-base mb-3 flex items-center gap-1.5">
-                                <i data-lucide="user-check" class="w-4 h-4 text-ocean"></i>
-                                <span>ডেলিভারি ঠিকানা ও তথ্য দিন</span>
-                            </h4>
-
-                            <div class="space-y-3">
-                                <div>
-                                    <label class="block text-xs font-semibold text-slate-700 mb-1">আপনার নাম <span class="text-red-500">*</span></label>
-                                    <input type="text" id="order-name" required placeholder="যেমন: রাশেদুল ইসলাম" 
-                                           class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-ocean focus:border-ocean outline-none">
-                                </div>
-
-                                <div>
-                                    <label class="block text-xs font-semibold text-slate-700 mb-1">মোবাইল নম্বর <span class="text-red-500">*</span></label>
-                                    <input type="tel" id="order-phone" required placeholder="017XXXXXXXX" 
-                                           class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm font-en focus:ring-2 focus:ring-ocean focus:border-ocean outline-none">
-                                </div>
-
-                                <div>
-                                    <label class="block text-xs font-semibold text-slate-700 mb-1">এলাকা ও সম্পূর্ণ ঠিকানা <span class="text-red-500">*</span></label>
-                                    <textarea id="order-address" rows="2" required placeholder="যেমন: বাসা-১৫, রোড-৭, ধানমন্ডি / জিগাতলা / পিলখানা, ঢাকা" 
-                                              class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-ocean focus:border-ocean outline-none"></textarea>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Action Buttons -->
-                        <div class="pt-2 space-y-2.5">
-                            <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-4 rounded-xl shadow-lg transition flex items-center justify-center gap-2 text-sm sm:text-base">
-                                <i data-lucide="send" class="w-5 h-5"></i>
-                                <span>WhatsApp-এ অর্ডার কনফার্ম করুন</span>
-                            </button>
-
-                            <button type="button" onclick="copyOrderDetails()" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-2.5 px-4 rounded-xl transition flex items-center justify-center gap-2 text-xs sm:text-sm border border-slate-300">
-                                <i data-lucide="copy" class="w-4 h-4"></i>
-                                <span>কপি অর্ডার ডিটেইলস (Copy Order)</span>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- =========================================================================
-         ⚙️ JAVASCRIPT LOGIC
-         ========================================================================= -->
-    <script>
-        let cart = [];
-        let activeCategory = 'all';
-        let selectedWeights = {}; // Stores currently selected weight per product ID
-
-        const weightLabelsBn = {
-            "250g": "২৫০ গ্রাম",
-            "500g": "৫০০ গ্রাম",
-            "1kg": "১ কেজি"
-        };
-
-        // Initialize App
-        document.addEventListener('DOMContentLoaded', () => {
-            initConfig();
-            renderProducts();
-            updateCartUI();
-            lucide.createIcons();
-        });
-
-        // Populate UI from STORE_CONFIG
-        function initConfig() {
-            document.getElementById('top-announcement-text').textContent = STORE_CONFIG.announcementText;
-            document.getElementById('nav-brand-title').textContent = STORE_CONFIG.brandName;
-            document.getElementById('nav-brand-slogan').textContent = STORE_CONFIG.slogan;
-            document.getElementById('hero-slogan-text').textContent = STORE_CONFIG.slogan;
-
-            const cleanPhone = STORE_CONFIG.displayPhone.replace(/\s+/g, '');
-            document.getElementById('nav-call-btn').href = `tel:${cleanPhone}`;
-            document.getElementById('nav-phone-display').textContent = STORE_CONFIG.displayPhone;
-            document.getElementById('footer-phone-link').href = `tel:${cleanPhone}`;
-            document.getElementById('footer-phone-link').textContent = STORE_CONFIG.displayPhone;
-            document.getElementById('footer-fb-link').href = STORE_CONFIG.facebookUrl;
-
-            const waGreeting = `https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${encodeURIComponent("আসসালামু আলাইকুম Check oUt! আমি আপনাদের পণ্য সম্পর্কে জানতে চাই।")}`;
-            document.getElementById('hero-wa-direct').href = waGreeting;
-            document.getElementById('footer-wa-link').href = waGreeting;
-            document.getElementById('footer-year').textContent = new Date().getFullYear();
-        }
-
-        // Category Filter Handler
-        function filterProducts(category) {
-            activeCategory = category;
-            
-            document.querySelectorAll('.filter-tab').forEach(btn => {
-                btn.classList.remove('bg-ocean', 'text-white', 'shadow-sm');
-                btn.classList.add('bg-white', 'text-slate-700', 'border', 'border-slate-200');
-            });
-
-            const activeBtn = document.getElementById(`tab-${category}`);
-            if (activeBtn) {
-                activeBtn.classList.remove('bg-white', 'text-slate-700', 'border', 'border-slate-200');
-                activeBtn.classList.add('bg-ocean', 'text-white', 'shadow-sm');
-            }
-
-            renderProducts();
-        }
-
-        // Render Product Cards
-        function renderProducts() {
-            const grid = document.getElementById('products-grid');
-            grid.innerHTML = '';
-
-            const filtered = activeCategory === 'all' 
-                ? STORE_CONFIG.products 
-                : STORE_CONFIG.products.filter(p => p.category === activeCategory);
-
-            filtered.forEach(product => {
-                const weights = Object.keys(product.prices);
-                if (!selectedWeights[product.id]) {
-                    selectedWeights[product.id] = weights.includes('500g') ? '500g' : weights[0];
-                }
-                const currentWeight = selectedWeights[product.id];
-
-                const weightPillsHtml = weights.map(w => {
-                    const isSelected = w === currentWeight;
-                    return `
-                        <button type="button" 
-                                onclick="changeCardWeight('${product.id}', '${w}')"
-                                id="pill-${product.id}-${w}"
-                                class="pill-group-${product.id} flex-1 py-1.5 px-2 rounded-xl text-xs font-bold border transition ${
-                                    isSelected 
-                                    ? 'bg-ocean text-white border-ocean shadow-xs' 
-                                    : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-ocean-light'
-                                }">
-                            ${weightLabelsBn[w] || w}
-                        </button>
-                    `;
-                }).join('');
-
-                const card = document.createElement('div');
-                card.className = "bg-white rounded-3xl shadow-sm hover:shadow-xl transition duration-300 border border-slate-200/80 overflow-hidden flex flex-col justify-between";
-                card.innerHTML = `
-                    <div>
-                        <div class="relative h-52 bg-slate-100 overflow-hidden">
-                            <img src="${product.image}" 
-                                 alt="${product.name}" 
-                                 onerror="this.src='https://placehold.co/600x400/0f4c5c/ffffff?text=${encodeURIComponent(product.name)}'"
-                                 class="w-full h-full object-cover hover:scale-105 transition duration-500">
-                            ${product.badge ? `
-                                <span class="absolute top-3 left-3 ${product.badgeStyle || 'bg-emeraldBrand text-white'} text-xs font-bold px-3 py-1 rounded-full shadow-md">
-                                    ${product.badge}
-                                </span>
-                            ` : ''}
-                        </div>
-
-                        <div class="p-5 pb-3">
-                            <p class="font-en text-xs font-bold text-ocean uppercase tracking-wide">${product.name}</p>
-                            <h3 class="text-lg font-bold text-slate-900 mt-0.5 leading-snug">${product.subtitleBn}</h3>
-                            <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">${product.description}</p>
-                        </div>
-                    </div>
-
-                    <div class="p-5 pt-2 space-y-4">
-                        <div>
-                            <span class="block text-xs font-semibold text-slate-500 mb-1.5">ওজন নির্বাচন করুন:</span>
-                            <div class="flex gap-2">
-                                ${weightPillsHtml}
-                            </div>
-                        </div>
-
-                        <div class="flex items-center justify-between pt-3 border-t border-slate-100">
-                            <div>
-                                <span class="text-[11px] text-slate-500 block">মূল্য:</span>
-                                <span id="card-price-${product.id}" class="font-en text-2xl font-extrabold text-slate-900">
-                                    ৳${product.prices[currentWeight]}
-                                </span>
-                            </div>
-
-                            <button type="button" onclick="addToCart('${product.id}')" 
-                                    class="bg-coral hover:bg-coral-hover text-white font-bold text-xs sm:text-sm px-4 py-3 rounded-xl shadow-md transition active:scale-95 flex items-center gap-1.5">
-                                <i data-lucide="shopping-cart" class="w-4 h-4"></i>
-                                <span>অর্ডার কার্টে যোগ করুন</span>
-                            </button>
-                        </div>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
-
-            lucide.createIcons();
-        }
-
-        // Update Weight Pill & Price Dynamically
-        function changeCardWeight(productId, weight) {
-            selectedWeights[productId] = weight;
-            const product = STORE_CONFIG.products.find(p => p.id === productId);
-            if (!product) return;
-
-            const priceEl = document.getElementById(`card-price-${productId}`);
-            if (priceEl) {
-                priceEl.textContent = `৳${product.prices[weight]}`;
-            }
-
-            document.querySelectorAll(`.pill-group-${productId}`).forEach(btn => {
-                btn.classList.remove('bg-ocean', 'text-white', 'border-ocean', 'shadow-xs');
-                btn.classList.add('bg-slate-50', 'text-slate-700', 'border-slate-200');
-            });
-
-            const activePill = document.getElementById(`pill-${productId}-${weight}`);
-            if (activePill) {
-                activePill.classList.remove('bg-slate-50', 'text-slate-700', 'border-slate-200');
-                activePill.classList.add('bg-ocean', 'text-white', 'border-ocean', 'shadow-xs');
-            }
-        }
-
-        // Add Item to Cart
-        function addToCart(productId) {
-            const product = STORE_CONFIG.products.find(p => p.id === productId);
-            const weight = selectedWeights[productId];
-            if (!product || !weight) return;
-
-            const key = `${productId}_${weight}`;
-            const existing = cart.find(item => item.key === key);
-
-            if (existing) {
-                existing.qty += 1;
-            } else {
-                cart.push({
-                    key: key,
-                    id: product.id,
-                    name: product.name,
-                    subtitleBn: product.subtitleBn,
-                    weight: weight,
-                    weightBn: weightLabelsBn[weight] || weight,
-                    price: product.prices[weight],
-                    qty: 1
-                });
-            }
-
-            updateCartUI();
-            showToast(`"${product.subtitleBn} (${weightLabelsBn[weight]})" কার্টে যোগ হয়েছে!`);
-        }
-
-        // Adjust Item Quantity or Remove
-        function updateQty(key, delta) {
-            const idx = cart.findIndex(item => item.key === key);
-            if (idx === -1) return;
-
-            cart[idx].qty += delta;
-            if (cart[idx].qty <= 0) {
-                cart.splice(idx, 1);
-            }
-            updateCartUI();
-        }
-
-        function removeItem(key) {
-            cart = cart.filter(item => item.key !== key);
-            updateCartUI();
-        }
-
-        // Update Cart Badges, Drawer Items & Totals
-        function updateCartUI() {
-            const totalCount = cart.reduce((sum, i) => sum + i.qty, 0);
-            const subtotal = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
-            
-            const isFreeDelivery = subtotal >= STORE_CONFIG.freeDeliveryMinAmount && subtotal > 0;
-            const deliveryFee = subtotal === 0 ? 0 : (isFreeDelivery ? 0 : STORE_CONFIG.deliveryChargeDhaka);
-            const grandTotal = subtotal + deliveryFee;
-
-            // Update Badges
-            document.getElementById('header-cart-badge').textContent = totalCount;
-            document.getElementById('mobile-bar-count').textContent = totalCount;
-            document.getElementById('mobile-bar-total').textContent = `৳${grandTotal}`;
-
-            const mobileBar = document.getElementById('mobile-sticky-cart');
-            if (totalCount > 0) {
-                mobileBar.classList.remove('hidden');
-            } else {
-                mobileBar.classList.add('hidden');
-            }
-
-            // Render Drawer Items
-            const listEl = document.getElementById('drawer-items-list');
-            const summaryEl = document.getElementById('drawer-summary');
-            const formEl = document.getElementById('drawer-order-form');
-
-            if (cart.length === 0) {
-                listEl.innerHTML = `
-                    <div class="text-center py-10 space-y-3">
-                        <div class="w-16 h-16 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center mx-auto">
-                            <i data-lucide="shopping-bag" class="w-8 h-8"></i>
-                        </div>
-                        <p class="text-slate-600 font-semibold">আপনার অর্ডার কার্টটি খালি!</p>
-                        <button type="button" onclick="closeCartDrawer()" class="text-ocean font-bold text-sm hover:underline">
-                            পণ্য বাছাই করতে ফিরে যান
-                        </button>
-                    </div>
-                `;
-                summaryEl.classList.add('hidden');
-                formEl.classList.add('hidden');
-                lucide.createIcons();
-                return;
-            }
-
-            summaryEl.classList.remove('hidden');
-            formEl.classList.remove('hidden');
-
-            listEl.innerHTML = cart.map(item => `
-                <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200 flex items-center justify-between gap-3">
-                    <div class="flex-1 min-w-0">
-                        <h4 class="font-bold text-slate-800 text-sm truncate">${item.subtitleBn}</h4>
-                        <div class="flex items-center gap-2 mt-1">
-                            <span class="bg-ocean-light text-ocean text-xs font-bold px-2 py-0.5 rounded-md">${item.weightBn}</span>
-                            <span class="font-en text-xs text-slate-500">৳${item.price} × ${item.qty}</span>
-                        </div>
-                    </div>
-
-                    <div class="flex items-center gap-1.5">
-                        <button type="button" onclick="updateQty('${item.key}', -1)" class="w-7 h-7 rounded-lg bg-white border border-slate-300 hover:bg-slate-100 font-bold text-slate-700 flex items-center justify-center">-</button>
-                        <span class="font-en font-bold text-sm w-5 text-center">${item.qty}</span>
-                        <button type="button" onclick="updateQty('${item.key}', 1)" class="w-7 h-7 rounded-lg bg-white border border-slate-300 hover:bg-slate-100 font-bold text-slate-700 flex items-center justify-center">+</button>
-                    </div>
-
-                    <div class="text-right flex flex-col items-end gap-1">
-                        <span class="font-en font-bold text-slate-900 text-sm">৳${item.price * item.qty}</span>
-                        <button type="button" onclick="removeItem('${item.key}')" class="text-red-500 hover:text-red-700 text-xs" title="মুছে ফেলুন">
-                            <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
-                        </button>
-                    </div>
-                </div>
-            `).join('');
-
-            document.getElementById('drawer-subtotal').textContent = `৳${subtotal}`;
-            document.getElementById('drawer-delivery').textContent = isFreeDelivery ? "ফ্রি (৳0)" : `৳${deliveryFee}`;
-            document.getElementById('drawer-total').textContent = `৳${grandTotal}`;
-
-            const freeMsgEl = document.getElementById('drawer-free-delivery-msg');
-            if (isFreeDelivery) {
-                freeMsgEl.textContent = "🎉 অভিনন্দন! আপনি ফ্রি হোম ডেলিভারি সুবিধা পেয়েছেন।";
-            } else {
-                const diff = STORE_CONFIG.freeDeliveryMinAmount - subtotal;
-                freeMsgEl.textContent = `আরও ৳${diff} টাকার পণ্য যোগ করলে ডেলিভারি চার্জ একদম ফ্রি!`;
-            }
-
-            lucide.createIcons();
-        }
-
-        // Slide-over Drawer Open/Close
-        function openCartDrawer() {
-            const wrapper = document.getElementById('cart-drawer-wrapper');
-            const backdrop = document.getElementById('cart-backdrop');
-            const panel = document.getElementById('cart-drawer-panel');
-
-            wrapper.classList.remove('hidden');
-            setTimeout(() => {
-                backdrop.classList.remove('opacity-0');
-                panel.classList.remove('drawer-enter');
-                panel.classList.add('drawer-open');
-            }, 10);
-        }
-
-        function closeCartDrawer() {
-            const wrapper = document.getElementById('cart-drawer-wrapper');
-            const backdrop = document.getElementById('cart-backdrop');
-            const panel = document.getElementById('cart-drawer-panel');
-
-            backdrop.classList.add('opacity-0');
-            panel.classList.remove('drawer-open');
-            panel.classList.add('drawer-enter');
-
-            setTimeout(() => {
-                wrapper.classList.add('hidden');
-            }, 300);
-        }
-
-        // Build Formatted Bengali Order Receipt
-        function generateOrderReceiptText() {
-            const name = document.getElementById('order-name').value.trim() || "উল্লেখ করা হয়নি";
-            const phone = document.getElementById('order-phone').value.trim() || "উল্লেখ করা হয়নি";
-            const address = document.getElementById('order-address').value.trim() || "উল্লেখ করা হয়নি";
-
-            const subtotal = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
-            const isFreeDelivery = subtotal >= STORE_CONFIG.freeDeliveryMinAmount;
-            const deliveryFee = isFreeDelivery ? 0 : STORE_CONFIG.deliveryChargeDhaka;
-            const grandTotal = subtotal + deliveryFee;
-
-            const itemsText = cart.map((item, idx) => 
-                `${idx + 1}. ${item.subtitleBn} (${item.weightBn}) - ${item.qty}টি = ৳${item.price * item.qty}`
-            ).join('\n');
-
-            return `🛒 *নতুন অর্ডার - ${STORE_CONFIG.brandName}*\n` +
-                   `_"${STORE_CONFIG.slogan}"_\n` +
-                   `━━━━━━━━━━━━━━━━━━━━\n` +
-                   `👤 *কাস্টমার তথ্য:*\n` +
-                   `• নাম: ${name}\n` +
-                   `• মোবাইল: ${phone}\n` +
-                   `• ঠিকানা: ${address}\n` +
-                   `━━━━━━━━━━━━━━━━━━━━\n` +
-                   `📦 *অর্ডারকৃত পণ্যসমূহ:*\n` +
-                   `${itemsText}\n` +
-                   `━━━━━━━━━━━━━━━━━━━━\n` +
-                   `• পণ্যের মূল্য: ৳${subtotal}\n` +
-                   `• ডেলিভারি চার্জ: ${isFreeDelivery ? 'ফ্রি (৳0)' : '৳' + deliveryFee}\n` +
-                   `💰 *সর্বমোট বিল: ৳${grandTotal}* (Cash on Delivery)`;
-        }
-
-        // Submit to WhatsApp
-        function submitOrderToWhatsApp(event) {
-            event.preventDefault();
-            if (cart.length === 0) return;
-
-            const receipt = generateOrderReceiptText();
-            const waUrl = `https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${encodeURIComponent(receipt)}`;
-            window.open(waUrl, '_blank');
-        }
-
-        // Fallback Copy Order Details (Using execCommand for iFrame/WebView safety)
-        function copyOrderDetails() {
-            if (cart.length === 0) return;
-            const receipt = generateOrderReceiptText();
-
-            const tempTextarea = document.createElement('textarea');
-            tempTextarea.value = receipt;
-            tempTextarea.style.position = 'fixed';
-            tempTextarea.style.left = '-9999px';
-            document.body.appendChild(tempTextarea);
-            tempTextarea.select();
-            
-            try {
-                document.execCommand('copy');
-                showToast("অর্ডার ডিটেইলস কপি হয়েছে! এখন মেসেঞ্জার বা WhatsApp-এ পেস্ট করুন।");
-            } catch (err) {
-                showToast("কপি করতে সমস্যা হয়েছে, অনুগ্রহ করে WhatsApp বাটন ব্যবহার করুন।");
-            }
-            
-            document.body.removeChild(tempTextarea);
-        }
-
-        // Toast Helper
-        let toastTimer;
-        function showToast(msg) {
-            const toast = document.getElementById('toast-box');
-            document.getElementById('toast-text').textContent = msg;
-            toast.classList.remove('translate-x-[120%]', 'opacity-0');
-            
-            clearTimeout(toastTimer);
-            toastTimer = setTimeout(() => {
-                toast.classList.add('translate-x-[120%]', 'opacity-0');
-            }, 3000);
-        }
-    </script>
-</body>
-</html>
-<!DOCTYPE html>
 <html lang="bn">
 <head>
   <meta charset="UTF-8" />
@@ -959,107 +9,289 @@
   <meta property="og:image" content="https://checkoutbd.github.io/checkOut-/logo.png" />
   <style>
     * { box-sizing: border-box; font-family: Arial, sans-serif; }
-    body { margin: 0; padding: 16px; background: #f4f7f4; color: #1b2e1b; }
-    .container { max-width: 600px; margin: 0 auto; background: #ffffff; padding: 20px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
-    .header { text-align: center; border-bottom: 1px solid #e2ece2; padding-bottom: 14px; margin-bottom: 18px; }
-    .header img { max-width: 120px; height: auto; border-radius: 50%; margin-bottom: 8px; }
-    h1 { margin: 4px 0; font-size: 24px; color: #14532d; }
-    .slogan { margin: 0; font-size: 14px; color: #4b634b; }
-    table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
-    th, td { border: 1px solid #dce6dc; padding: 10px; text-align: left; font-size: 14px; }
-    th { background: #eaf4ea; color: #14532d; }
-    .order-box h2 { font-size: 18px; margin-bottom: 12px; color: #14532d; }
-    label { display: block; margin-top: 10px; margin-bottom: 4px; font-size: 14px; font-weight: bold; }
-    input, select, textarea { width: 100%; padding: 10px; border: 1px solid #b8c9b8; border-radius: 8px; font-size: 14px; }
-    button { width: 100%; margin-top: 16px; padding: 12px; background: #15803d; color: #fff; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; }
-    button:hover { background: #166534; }
+    body { margin: 0; padding: 0; background: #f5f6f8; color: #1e293b; padding-bottom: 80px; }
+
+    /* Top Bar & Header */
+    .top-strip { background: #14532d; color: #fff; font-size: 12px; padding: 6px 14px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; }
+    .top-strip a { color: #fff; text-decoration: none; font-weight: bold; }
+
+    .header { background: #ffffff; padding: 12px 14px; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 20; box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
+    .header-top { display: flex; align-items: center; justify-content: space-between; max-width: 720px; margin: 0 auto; }
+    .brand-box { display: flex; align-items: center; gap: 10px; }
+    .brand-box img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 2px solid #15803d; }
+    .brand-title { margin: 0; font-size: 18px; font-weight: bold; color: #14532d; }
+    .brand-sub { margin: 0; font-size: 11px; color: #64748b; }
+
+    .cart-btn { position: relative; background: #15803d; color: #fff; border: none; border-radius: 8px; padding: 8px 14px; font-size: 13px; font-weight: bold; cursor: pointer; }
+    .cart-badge { background: #dc2626; color: #fff; border-radius: 999px; padding: 2px 6px; font-size: 11px; margin-left: 4px; }
+
+    .search-wrap { max-width: 720px; margin: 10px auto 0 auto; }
+    .search-input { width: 100%; padding: 9px 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 14px; outline: none; }
+
+    /* Main Container */
+    .main { max-width: 720px; margin: 14px auto; padding: 0 12px; }
+    .section-head { text-align: center; margin-bottom: 14px; }
+    .section-head h2 { margin: 0; font-size: 20px; color: #0f172a; }
+    .section-head p { margin: 4px 0 0 0; font-size: 13px; color: #64748b; }
+
+    /* 2-Column Product Grid */
+    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
+    .img-box { position: relative; background: #f8fafc; height: 135px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .img-box img { width: 100%; height: 100%; object-fit: cover; }
+    .badge-popular { position: absolute; top: 8px; left: 8px; background: #dc2626; color: #fff; font-size: 10px; font-weight: bold; padding: 3px 8px; border-radius: 999px; }
+
+    .card-body { padding: 10px; }
+    .prod-name { margin: 0 0 4px 0; font-size: 14px; font-weight: bold; color: #0f172a; line-height: 1.3; }
+    .prod-unit { margin: 0 0 6px 0; font-size: 12px; color: #64748b; }
+    .prod-price { margin: 0 0 10px 0; font-size: 15px; font-weight: bold; color: #dc2626; }
+    .add-btn { width: 100%; background: #dc2626; color: #fff; border: none; border-radius: 6px; padding: 9px; font-size: 13px; font-weight: bold; cursor: pointer; }
+    .add-btn:hover { background: #b91c1c; }
+
+    /* Cart & Checkout Panel */
+    .cart-panel { margin-top: 22px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+    .cart-panel h3 { margin: 0 0 12px 0; font-size: 18px; color: #14532d; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; }
+    .cart-empty { text-align: center; color: #64748b; font-size: 14px; padding: 14px 0; }
+
+    .cart-item { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 10px 0; border-bottom: 1px solid #f1f5f9; }
+    .cart-item-info { flex: 1; }
+    .cart-item-title { font-size: 14px; font-weight: bold; color: #0f172a; }
+    .cart-item-sub { font-size: 12px; color: #64748b; }
+
+    .qty-controls { display: flex; align-items: center; gap: 6px; }
+    .qty-btn { width: 28px; height: 28px; border: 1px solid #cbd5e1; background: #f8fafc; border-radius: 6px; font-weight: bold; cursor: pointer; }
+    .qty-num { min-width: 20px; text-align: center; font-weight: bold; font-size: 14px; }
+    .del-btn { background: none; border: none; color: #dc2626; font-size: 16px; cursor: pointer; padding: 4px; }
+
+    .total-row { display: flex; justify-content: space-between; font-size: 17px; font-weight: bold; color: #0f172a; margin-top: 14px; padding-top: 10px; border-top: 2px solid #e2e8f0; }
+    .total-amount { color: #dc2626; }
+
+    .checkout-form { margin-top: 14px; }
+    label { display: block; margin-top: 10px; margin-bottom: 4px; font-size: 13px; font-weight: bold; color: #1e293b; }
+    input, textarea { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 14px; }
+    .checkout-btn { width: 100%; margin-top: 14px; padding: 12px; background: #dc2626; color: #fff; border: none; border-radius: 8px; font-size: 15px; font-weight: bold; cursor: pointer; }
+    .checkout-btn:hover { background: #b91c1c; }
+    .status-msg { margin-top: 10px; font-size: 14px; font-weight: bold; text-align: center; }
+
+    /* Footer */
+    .footer { max-width: 720px; margin: 20px auto 0 auto; padding: 14px; text-align: center; font-size: 13px; color: #475569; }
+    .footer a { color: #15803d; text-decoration: none; font-weight: bold; }
+
+    /* Floating WhatsApp Button */
+    .wa-float { position: fixed; right: 16px; bottom: 16px; width: 56px; height: 56px; border-radius: 50%; background: #22c55e; color: #fff; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 26px; box-shadow: 0 4px 14px rgba(0,0,0,0.22); z-index: 50; }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="header">
-      <img src="logo.png" alt="Check oUt Logo" onerror="this.style.display='none'" />
-      <h1>Check oUt</h1>
-      <p class="slogan">We Value Our Customers Like Family</p>
-    </div>
-
-    <table>
-      <thead>
-        <tr>
-          <th>পণ্য</th>
-          <th>ওজন / ইউনিট</th>
-          <th>দাম</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>বাগদা চিংড়ি (রেডি-টু-কুক)</td>
-          <td>১ কেজি</td>
-          <td>১২০০ টাকা</td>
-        </tr>
-        <tr>
-          <td>গলদা / ছাটি চিংড়ি</td>
-          <td>১ কেজি</td>
-          <td>১৪০০ টাকা</td>
-        </tr>
-        <tr>
-          <td>হরিনা চিংড়ি</td>
-          <td>১ কেজি</td>
-          <td>১১০০ টাকা</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="order-box">
-      <h2>অর্ডার ফর্ম</h2>
-      <form id="orderForm">
-        <label for="customerName">আপনার নাম</label>
-        <input type="text" id="customerName" required placeholder="নাম লিখুন" />
-
-        <label for="customerPhone">মোবাইল নম্বর</label>
-        <input type="tel" id="customerPhone" required placeholder="01XXXXXXXXX" />
-
-        <label for="productSelect">পণ্য ও প্যাকেজ</label>
-        <select id="productSelect">
-          <option value="বাগদা চিংড়ি (১ কেজি - ১২০০ টাকা)">বাগদা চিংড়ি (১ কেজি - ১২০০ টাকা)</option>
-          <option value="গলদা / ছাটি চিংড়ি (১ কেজি - ১৪০০ টাকা)">গলদা / ছাটি চিংড়ি (১ কেজি - ১৪০০ টাকা)</option>
-          <option value="হরিনা চিংড়ি (১ কেজি - ১১০০ টাকা)">হরিনা চিংড়ি (১ কেজি - ১১০০ টাকা)</option>
-        </select>
-
-        <label for="quantity">পরিমাণ (কেজি / প্যাক)</label>
-        <input type="number" id="quantity" min="1" value="1" required />
-
-        <label for="address">ডেলিভারির ঠিকানা</label>
-        <textarea id="address" rows="3" required placeholder="বাসা/রোড, এলাকা, থানা/জেলা লিখুন"></textarea>
-
-        <button type="submit">WhatsApp-এ অর্ডার পাঠান</button>
-      </form>
-    </div>
+  <div class="top-strip">
+    <span>WhatsApp: <a href="https://wa.me/8801792103563" target="_blank" rel="noopener noreferrer">01792103563</a></span>
+    <a href="https://www.facebook.com/profile.php?id=61585966142391" target="_blank" rel="noopener noreferrer">Facebook Page</a>
   </div>
 
+  <header class="header">
+    <div class="header-top">
+      <div class="brand-box">
+        <img src="logo.png" alt="Check oUt" onerror="this.style.display='none'" />
+        <div>
+          <h1 class="brand-title">Check oUt</h1>
+          <p class="brand-sub">We Value Our Customers Like Family</p>
+        </div>
+      </div>
+      <button type="button" class="cart-btn" onclick="scrollToCart()">
+        Cart <span id="cartCount" class="cart-badge">0</span>
+      </button>
+    </div>
+    <div class="search-wrap">
+      <input type="text" id="searchInput" class="search-input" placeholder="চিংড়ির নাম লিখে খুঁজুন..." oninput="renderProducts()" />
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="section-head">
+      <h2>Our Products</h2>
+      <p>Fresh ready-to-cook picks from our collection.</p>
+    </div>
+
+    <div id="productGrid" class="grid"></div>
+
+    <section id="cartSection" class="cart-panel">
+      <h3>Shopping Cart & Checkout</h3>
+      <div id="cartItems"></div>
+
+      <div class="total-row">
+        <span>Total</span>
+        <span id="cartTotal" class="total-amount">৳0</span>
+      </div>
+
+      <form id="checkoutForm" class="checkout-form">
+        <label for="custName">আপনার নাম</label>
+        <input type="text" id="custName" required placeholder="নাম লিখুন" />
+
+        <label for="custPhone">মোবাইল নম্বর</label>
+        <input type="tel" id="custPhone" required placeholder="01XXXXXXXXX" />
+
+        <label for="custAddress">ডেলিভারির ঠিকানা</label>
+        <textarea id="custAddress" rows="3" required placeholder="বাসা/রোড, এলাকা, থানা/জেলা লিখুন"></textarea>
+
+        <button type="submit" id="checkoutBtn" class="checkout-btn">Checkout</button>
+        <div id="statusMsg" class="status-msg"></div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Check oUt • <a href="https://wa.me/8801792103563" target="_blank" rel="noopener noreferrer">WhatsApp Business (01792103563)</a> • <a href="https://www.facebook.com/profile.php?id=61585966142391" target="_blank" rel="noopener noreferrer">Facebook</a></p>
+  </footer>
+
+  <a class="wa-float" href="https://wa.me/8801792103563" target="_blank" rel="noopener noreferrer" title="WhatsApp-এ কথা বলুন">💬</a>
+
   <script>
-    const whatsappNumber = "8801XXXXXXXXX"; // এখানে 880সহ আপনার WhatsApp নম্বর বসান
+    const API_URL = "https://script.google.com/macros/s/AKfycbxqamSUzfvY8ZVimg3R47b2TFxJNAFmkx6mdwU64Mv9bWOsvZH2wSaHRAN9PynDGF0L/exec";
 
-    document.getElementById("orderForm").addEventListener("submit", function(e) {
+    const products = [
+      { id: 1, name: "বাগদা চিংড়ি (রেডি-টু-কুক)", unit: "per kg", price: 1200, img: "bagda-shrimp.jpg", popular: true },
+      { id: 2, name: "গলদা / ছাটি চিংড়ি", unit: "per kg", price: 1400, img: "golda-shrimp.jpg", popular: true },
+      { id: 3, name: "হরিনা চিংড়ি", unit: "per kg", price: 1100, img: "horina-shrimp.jpg", popular: false }
+    ];
+
+    let cart = [];
+
+    function renderProducts() {
+      const q = document.getElementById("searchInput").value.trim().toLowerCase();
+      const grid = document.getElementById("productGrid");
+      const filtered = products.filter(p => p.name.toLowerCase().includes(q));
+
+      grid.innerHTML = filtered.map(p => `
+        <div class="card">
+          <div class="img-box">
+            ${p.popular ? '<span class="badge-popular">Popular</span>' : ''}
+            <img src="${p.img}" alt="${p.name}" onerror="this.style.display='none'" />
+          </div>
+          <div class="card-body">
+            <h3 class="prod-name">${p.name}</h3>
+            <p class="prod-unit">৳${p.price} ${p.unit}</p>
+            <p class="prod-price">৳${p.price}</p>
+            <button type="button" class="add-btn" onclick="addToCart(${p.id})">Add to Cart</button>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function addToCart(id) {
+      const item = cart.find(c => c.id === id);
+      if (item) {
+        item.qty += 1;
+      } else {
+        const prod = products.find(p => p.id === id);
+        cart.push({ id: prod.id, name: prod.name, price: prod.price, qty: 1 });
+      }
+      renderCart();
+    }
+
+    function changeQty(id, delta) {
+      const item = cart.find(c => c.id === id);
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) {
+        cart = cart.filter(c => c.id !== id);
+      }
+      renderCart();
+    }
+
+    function removeItem(id) {
+      cart = cart.filter(c => c.id !== id);
+      renderCart();
+    }
+
+    function renderCart() {
+      const container = document.getElementById("cartItems");
+      const totalEl = document.getElementById("cartTotal");
+      const badgeEl = document.getElementById("cartCount");
+
+      const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+      const totalPrice = cart.reduce((sum, item) => sum + item.qty * item.price, 0);
+
+      badgeEl.innerText = totalQty;
+      totalEl.innerText = `৳${totalPrice}`;
+
+      if (cart.length === 0) {
+        container.innerHTML = '<div class="cart-empty">কার্টে এখনো কোনো পণ্য যুক্ত করা হয়নি।</div>';
+        return;
+      }
+
+      container.innerHTML = cart.map(item => `
+        <div class="cart-item">
+          <div class="cart-item-info">
+            <div class="cart-item-title">${item.name}</div>
+            <div class="cart-item-sub">৳${item.price} × ${item.qty} = ৳${item.price * item.qty}</div>
+          </div>
+          <div class="qty-controls">
+            <button type="button" class="qty-btn" onclick="changeQty(${item.id}, -1)">-</button>
+            <span class="qty-num">${item.qty}</span>
+            <button type="button" class="qty-btn" onclick="changeQty(${item.id}, 1)">+</button>
+            <button type="button" class="del-btn" onclick="removeItem(${item.id})" title="মুছুন">🗑</button>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function scrollToCart() {
+      document.getElementById("cartSection").scrollIntoView({ behavior: "smooth" });
+    }
+
+    document.getElementById("checkoutForm").addEventListener("submit", async function(e) {
       e.preventDefault();
-      const name = document.getElementById("customerName").value.trim();
-      const phone = document.getElementById("customerPhone").value.trim();
-      const product = document.getElementById("productSelect").value;
-      const qty = document.getElementById("quantity").value;
-      const address = document.getElementById("address").value.trim();
+      const statusMsg = document.getElementById("statusMsg");
+      const btn = document.getElementById("checkoutBtn");
 
-      const message =
-        `নতুন অর্ডার - Check oUt\n` +
-        `নাম: ${name}\n` +
-        `ফোন: ${phone}\n` +
-        `পণ্য: ${product}\n` +
-        `পরিমাণ: ${qty}\n` +
-        `ঠিকানা: ${address}`;
+      if (cart.length === 0) {
+        statusMsg.style.color = "#dc2626";
+        statusMsg.innerText = "আগে অন্তত একটি চিংড়ি Add to Cart করুন।";
+        return;
+      }
 
-      const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-      window.open(url, "_blank");
+      const name = document.getElementById("custName").value.trim();
+      const phone = document.getElementById("custPhone").value.trim();
+      const address = document.getElementById("custAddress").value.trim();
+      const productSummary = cart.map(i => `${i.name} (${i.qty} kg)`).join(", ");
+      const totalQty = cart.reduce((s, i) => s + i.qty, 0);
+      const totalPrice = cart.reduce((s, i) => s + i.qty * i.price, 0);
+
+      const payload = {
+        name: name,
+        phone: phone,
+        product: `${productSummary} | Total: ৳${totalPrice}`,
+        quantity: totalQty,
+        address: address
+      };
+
+      btn.disabled = true;
+      btn.innerText = "অর্ডার পাঠানো হচ্ছে...";
+      statusMsg.innerText = "";
+
+      try {
+        await fetch(API_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+
+        statusMsg.style.color = "#15803d";
+        statusMsg.innerText = "ধন্যবাদ! আপনার অর্ডারটি সফলভাবে জমা হয়েছে।";
+        cart = [];
+        renderCart();
+        document.getElementById("checkoutForm").reset();
+      } catch (err) {
+        statusMsg.style.color = "#dc2626";
+        statusMsg.innerText = "অর্ডার পাঠাতে সমস্যা হয়েছে, আবার চেষ্টা করুন।";
+      } finally {
+        btn.disabled = false;
+        btn.innerText = "Checkout";
+      }
     });
+
+    renderProducts();
+    renderCart();
   </script>
 </body>
 </html>
-
