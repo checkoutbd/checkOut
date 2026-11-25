@@ -3,296 +3,148 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Check oUt - Ready-to-Cook চিংড়ি</title>
-<link rel="icon" type="image/png" href="Logo.png" />
-  <meta property="og:title" content="Check oUt - We Value Our Customers Like Family" />
-  <meta property="og:description" content="ফ্রেশ ও রেডি-টু-কুক চিংড়ি অর্ডার করুন সহজেই।" />
+  <title>Check oUt — We Value Our Customers Like Family</title>
+  <link rel="icon" type="image/png" href="logo.png" />
+  <meta property="og:title" content="Check oUt — We Value Our Customers Like Family" />
+  <meta property="og:description" content="ফ্রেশ রেডি-টু-কুক চিংড়ি ও বিশ্বস্ত পণ্য — সরাসরি অর্ডার করুন।" />
   <meta property="og:image" content="https://checkoutbd.github.io/checkOut-/logo.png" />
   <style>
     * { box-sizing: border-box; font-family: Arial, sans-serif; }
-    body { margin: 0; padding: 0; background: #f5f6f8; color: #1e293b; padding-bottom: 80px; }
-
-    /* Top Bar & Header */
-    .top-strip { background: #14532d; color: #fff; font-size: 12px; padding: 6px 14px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; }
-    .top-strip a { color: #fff; text-decoration: none; font-weight: bold; }
-
-    .header { background: #ffffff; padding: 12px 14px; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 20; box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
-    .header-top { display: flex; align-items: center; justify-content: space-between; max-width: 720px; margin: 0 auto; }
-    .brand-box { display: flex; align-items: center; gap: 10px; }
-    .brand-box img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 2px solid #15803d; }
-    .brand-title { margin: 0; font-size: 18px; font-weight: bold; color: #14532d; }
-    .brand-sub { margin: 0; font-size: 11px; color: #64748b; }
-
-    .cart-btn { position: relative; background: #15803d; color: #fff; border: none; border-radius: 8px; padding: 8px 14px; font-size: 13px; font-weight: bold; cursor: pointer; }
-    .cart-badge { background: #dc2626; color: #fff; border-radius: 999px; padding: 2px 6px; font-size: 11px; margin-left: 4px; }
-
-    .search-wrap { max-width: 720px; margin: 10px auto 0 auto; }
-    .search-input { width: 100%; padding: 9px 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 14px; outline: none; }
-
-    /* Main Container */
-    .main { max-width: 720px; margin: 14px auto; padding: 0 12px; }
-    .section-head { text-align: center; margin-bottom: 14px; }
-    .section-head h2 { margin: 0; font-size: 20px; color: #0f172a; }
-    .section-head p { margin: 4px 0 0 0; font-size: 13px; color: #64748b; }
-
-    /* 2-Column Product Grid */
-    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
-    .img-box { position: relative; background: #f8fafc; height: 135px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-    .img-box img { width: 100%; height: 100%; object-fit: cover; }
-    .badge-popular { position: absolute; top: 8px; left: 8px; background: #dc2626; color: #fff; font-size: 10px; font-weight: bold; padding: 3px 8px; border-radius: 999px; }
-
-    .card-body { padding: 10px; }
-    .prod-name { margin: 0 0 4px 0; font-size: 14px; font-weight: bold; color: #0f172a; line-height: 1.3; }
-    .prod-unit { margin: 0 0 6px 0; font-size: 12px; color: #64748b; }
-    .prod-price { margin: 0 0 10px 0; font-size: 15px; font-weight: bold; color: #dc2626; }
-    .add-btn { width: 100%; background: #dc2626; color: #fff; border: none; border-radius: 6px; padding: 9px; font-size: 13px; font-weight: bold; cursor: pointer; }
-    .add-btn:hover { background: #b91c1c; }
-
-    /* Cart & Checkout Panel */
-    .cart-panel { margin-top: 22px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-    .cart-panel h3 { margin: 0 0 12px 0; font-size: 18px; color: #14532d; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; }
-    .cart-empty { text-align: center; color: #64748b; font-size: 14px; padding: 14px 0; }
-
-    .cart-item { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 10px 0; border-bottom: 1px solid #f1f5f9; }
-    .cart-item-info { flex: 1; }
-    .cart-item-title { font-size: 14px; font-weight: bold; color: #0f172a; }
-    .cart-item-sub { font-size: 12px; color: #64748b; }
-
-    .qty-controls { display: flex; align-items: center; gap: 6px; }
-    .qty-btn { width: 28px; height: 28px; border: 1px solid #cbd5e1; background: #f8fafc; border-radius: 6px; font-weight: bold; cursor: pointer; }
-    .qty-num { min-width: 20px; text-align: center; font-weight: bold; font-size: 14px; }
-    .del-btn { background: none; border: none; color: #dc2626; font-size: 16px; cursor: pointer; padding: 4px; }
-
-    .total-row { display: flex; justify-content: space-between; font-size: 17px; font-weight: bold; color: #0f172a; margin-top: 14px; padding-top: 10px; border-top: 2px solid #e2e8f0; }
-    .total-amount { color: #dc2626; }
-
-    .checkout-form { margin-top: 14px; }
-    label { display: block; margin-top: 10px; margin-bottom: 4px; font-size: 13px; font-weight: bold; color: #1e293b; }
-    input, textarea { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 14px; }
-    .checkout-btn { width: 100%; margin-top: 14px; padding: 12px; background: #dc2626; color: #fff; border: none; border-radius: 8px; font-size: 15px; font-weight: bold; cursor: pointer; }
-    .checkout-btn:hover { background: #b91c1c; }
-    .status-msg { margin-top: 10px; font-size: 14px; font-weight: bold; text-align: center; }
-
-    /* Footer */
-    .footer { max-width: 720px; margin: 20px auto 0 auto; padding: 14px; text-align: center; font-size: 13px; color: #475569; }
-    .footer a { color: #15803d; text-decoration: none; font-weight: bold; }
-
-    /* Floating WhatsApp Button */
-    .wa-float { position: fixed; right: 16px; bottom: 16px; width: 56px; height: 56px; border-radius: 50%; background: #22c55e; color: #fff; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 26px; box-shadow: 0 4px 14px rgba(0,0,0,0.22); z-index: 50; }
+    body { margin: 0; background: #f5f6f8; color: #1e293b; padding-bottom: 40px; }
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 12px 16px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .header-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; }
+    .brand img {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #15803d;
+    }
+    .brand-title { font-size: 18px; font-weight: bold; color: #14532d; margin: 0; }
+    .brand-sub { font-size: 11px; color: #64748b; margin: 2px 0 0; }
+    .go-order-btn {
+      background: #dc2626;
+      color: #fff;
+      text-decoration: none;
+      padding: 9px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+    .container { max-width: 720px; margin: 16px auto; padding: 0 12px; }
+    .card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 14px;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+    .prod-name { font-weight: bold; font-size: 15px; margin: 0 0 4px; }
+    .prod-price { color: #dc2626; font-weight: bold; font-size: 14px; }
+    .btn {
+      background: #15803d;
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .order-now-btn {
+      background: #dc2626;
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-left: 6px;
+    }
   </style>
 </head>
 <body>
-  <div class="top-strip">
-    <span>WhatsApp: <a href="https://wa.me/8801792103563" target="_blank" rel="noopener noreferrer">01792103563</a></span>
-    <a href="https://www.facebook.com/profile.php?id=61585966142391" target="_blank" rel="noopener noreferrer">Facebook Page</a>
-  </div>
-
-  <header class="header">
-    <div class="header-top">
-      <div class="brand-box">
-        <img src="logo.png" alt="Check oUt" onerror="this.style.display='none'" />
+  <header>
+    <div class="header-inner">
+      <a class="brand" href="index.html">
+        <img src="logo.png" alt="Check oUt Logo" onerror="this.style.display='none'" />
         <div>
-          <h1 class="brand-title">Check oUt</h1>
+          <p class="brand-title">Check oUt</p>
           <p class="brand-sub">We Value Our Customers Like Family</p>
         </div>
-      </div>
-      <button type="button" class="cart-btn" onclick="scrollToCart()">
-        Cart <span id="cartCount" class="cart-badge">0</span>
-      </button>
-    </div>
-    <div class="search-wrap">
-      <input type="text" id="searchInput" class="search-input" placeholder="চিংড়ির নাম লিখে খুঁজুন..." oninput="renderProducts()" />
+      </a>
+      <a class="go-order-btn" href="order.html">অর্ডার পেজ (<span id="cartCount">0</span>)</a>
     </div>
   </header>
 
-  <main class="main">
-    <div class="section-head">
-      <h2>Our Products</h2>
-      <p>Fresh ready-to-cook picks from our collection.</p>
+  <div class="container">
+    <!-- উদাহরণ প্রোডাক্ট কার্ড — নিজের পণ্য অনুযায়ী নাম ও দাম বদলে নেবেন -->
+    <div class="card">
+      <div>
+        <p class="prod-name">বাগদা চিংড়ি (রেডি-টু-কুক)</p>
+        <div class="prod-price">৳850 / কেজি</div>
+      </div>
+      <div>
+        <button class="btn" onclick="addToCart('বাগদা চিংড়ি', 850)">কার্টে নিন</button>
+        <button class="order-now-btn" onclick="orderDirect('বাগদা চিংড়ি', 850)">অর্ডার</button>
+      </div>
     </div>
 
-    <div id="productGrid" class="grid"></div>
-
-    <section id="cartSection" class="cart-panel">
-      <h3>Shopping Cart & Checkout</h3>
-      <div id="cartItems"></div>
-
-      <div class="total-row">
-        <span>Total</span>
-        <span id="cartTotal" class="total-amount">৳0</span>
+    <div class="card">
+      <div>
+        <p class="prod-name">ছাটি / গলদা চিংড়ি</p>
+        <div class="prod-price">৳950 / কেজি</div>
       </div>
-
-      <form id="checkoutForm" class="checkout-form">
-        <label for="custName">আপনার নাম</label>
-        <input type="text" id="custName" required placeholder="নাম লিখুন" />
-
-        <label for="custPhone">মোবাইল নম্বর</label>
-        <input type="tel" id="custPhone" required placeholder="01XXXXXXXXX" />
-
-        <label for="custAddress">ডেলিভারির ঠিকানা</label>
-        <textarea id="custAddress" rows="3" required placeholder="বাসা/রোড, এলাকা, থানা/জেলা লিখুন"></textarea>
-
-        <button type="submit" id="checkoutBtn" class="checkout-btn">Checkout</button>
-        <div id="statusMsg" class="status-msg"></div>
-      </form>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <p>Check oUt • <a href="https://wa.me/8801792103563" target="_blank" rel="noopener noreferrer">WhatsApp Business (01792103563)</a> • <a href="https://www.facebook.com/profile.php?id=61585966142391" target="_blank" rel="noopener noreferrer">Facebook</a></p>
-  </footer>
-
-  <a class="wa-float" href="https://wa.me/8801792103563" target="_blank" rel="noopener noreferrer" title="WhatsApp-এ কথা বলুন">💬</a>
+      <div>
+        <button class="btn" onclick="addToCart('ছাটি / গলদা চিংড়ি', 950)">কার্টে নিন</button>
+        <button class="order-now-btn" onclick="orderDirect('ছাটি / গলদা চিংড়ি', 950)">অর্ডার</button>
+      </div>
+    </div>
+  </div>
 
   <script>
-    const API_URL = "https://script.google.com/macros/s/AKfycbxqamSUzfvY8ZVimg3R47b2TFxJNAFmkx6mdwU64Mv9bWOsvZH2wSaHRAN9PynDGF0L/exec";
-
-    const products = [
-      { id: 1, name: "বাগদা চিংড়ি (রেডি-টু-কুক)", unit: "per kg", price: 1200, img: "bagda-shrimp.jpg", popular: true },
-      { id: 2, name: "গলদা / ছাটি চিংড়ি", unit: "per kg", price: 1400, img: "golda-shrimp.jpg", popular: true },
-      { id: 3, name: "হরিনা চিংড়ি", unit: "per kg", price: 1100, img: "horina-shrimp.jpg", popular: false }
-    ];
-
-    let cart = [];
-
-    function renderProducts() {
-      const q = document.getElementById("searchInput").value.trim().toLowerCase();
-      const grid = document.getElementById("productGrid");
-      const filtered = products.filter(p => p.name.toLowerCase().includes(q));
-
-      grid.innerHTML = filtered.map(p => `
-        <div class="card">
-          <div class="img-box">
-            ${p.popular ? '<span class="badge-popular">Popular</span>' : ''}
-            <img src="${p.img}" alt="${p.name}" onerror="this.style.display='none'" />
-          </div>
-          <div class="card-body">
-            <h3 class="prod-name">${p.name}</h3>
-            <p class="prod-unit">৳${p.price} ${p.unit}</p>
-            <p class="prod-price">৳${p.price}</p>
-            <button type="button" class="add-btn" onclick="addToCart(${p.id})">Add to Cart</button>
-          </div>
-        </div>
-      `).join("");
+    function getCart() {
+      return JSON.parse(localStorage.getItem("checkout_cart") || "[]");
     }
-
-    function addToCart(id) {
-      const item = cart.find(c => c.id === id);
-      if (item) {
-        item.qty += 1;
-      } else {
-        const prod = products.find(p => p.id === id);
-        cart.push({ id: prod.id, name: prod.name, price: prod.price, qty: 1 });
-      }
-      renderCart();
+    function saveCart(cart) {
+      localStorage.setItem("checkout_cart", JSON.stringify(cart));
+      updateCount();
     }
-
-    function changeQty(id, delta) {
-      const item = cart.find(c => c.id === id);
-      if (!item) return;
-      item.qty += delta;
-      if (item.qty <= 0) {
-        cart = cart.filter(c => c.id !== id);
-      }
-      renderCart();
+    function updateCount() {
+      const totalQty = getCart().reduce((sum, item) => sum + item.qty, 0);
+      document.getElementById("cartCount").textContent = totalQty;
     }
-
-    function removeItem(id) {
-      cart = cart.filter(c => c.id !== id);
-      renderCart();
+    function addToCart(name, price) {
+      const cart = getCart();
+      const found = cart.find(i => i.name === name);
+      if (found) found.qty += 1;
+      else cart.push({ name, price, qty: 1 });
+      saveCart(cart);
     }
-
-    function renderCart() {
-      const container = document.getElementById("cartItems");
-      const totalEl = document.getElementById("cartTotal");
-      const badgeEl = document.getElementById("cartCount");
-
-      const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
-      const totalPrice = cart.reduce((sum, item) => sum + item.qty * item.price, 0);
-
-      badgeEl.innerText = totalQty;
-      totalEl.innerText = `৳${totalPrice}`;
-
-      if (cart.length === 0) {
-        container.innerHTML = '<div class="cart-empty">কার্টে এখনো কোনো পণ্য যুক্ত করা হয়নি।</div>';
-        return;
-      }
-
-      container.innerHTML = cart.map(item => `
-        <div class="cart-item">
-          <div class="cart-item-info">
-            <div class="cart-item-title">${item.name}</div>
-            <div class="cart-item-sub">৳${item.price} × ${item.qty} = ৳${item.price * item.qty}</div>
-          </div>
-          <div class="qty-controls">
-            <button type="button" class="qty-btn" onclick="changeQty(${item.id}, -1)">-</button>
-            <span class="qty-num">${item.qty}</span>
-            <button type="button" class="qty-btn" onclick="changeQty(${item.id}, 1)">+</button>
-            <button type="button" class="del-btn" onclick="removeItem(${item.id})" title="মুছুন">🗑</button>
-          </div>
-        </div>
-      `).join("");
+    function orderDirect(name, price) {
+      saveCart([{ name, price, qty: 1 }]);
+      window.location.href = "order.html";
     }
-
-    function scrollToCart() {
-      document.getElementById("cartSection").scrollIntoView({ behavior: "smooth" });
-    }
-
-    document.getElementById("checkoutForm").addEventListener("submit", async function(e) {
-      e.preventDefault();
-      const statusMsg = document.getElementById("statusMsg");
-      const btn = document.getElementById("checkoutBtn");
-
-      if (cart.length === 0) {
-        statusMsg.style.color = "#dc2626";
-        statusMsg.innerText = "আগে অন্তত একটি চিংড়ি Add to Cart করুন।";
-        return;
-      }
-
-      const name = document.getElementById("custName").value.trim();
-      const phone = document.getElementById("custPhone").value.trim();
-      const address = document.getElementById("custAddress").value.trim();
-      const productSummary = cart.map(i => `${i.name} (${i.qty} kg)`).join(", ");
-      const totalQty = cart.reduce((s, i) => s + i.qty, 0);
-      const totalPrice = cart.reduce((s, i) => s + i.qty * i.price, 0);
-
-      const payload = {
-        name: name,
-        phone: phone,
-        product: `${productSummary} | Total: ৳${totalPrice}`,
-        quantity: totalQty,
-        address: address
-      };
-
-      btn.disabled = true;
-      btn.innerText = "অর্ডার পাঠানো হচ্ছে...";
-      statusMsg.innerText = "";
-
-      try {
-        await fetch(API_URL, {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload)
-        });
-
-        statusMsg.style.color = "#15803d";
-        statusMsg.innerText = "ধন্যবাদ! আপনার অর্ডারটি সফলভাবে জমা হয়েছে।";
-        cart = [];
-        renderCart();
-        document.getElementById("checkoutForm").reset();
-      } catch (err) {
-        statusMsg.style.color = "#dc2626";
-        statusMsg.innerText = "অর্ডার পাঠাতে সমস্যা হয়েছে, আবার চেষ্টা করুন।";
-      } finally {
-        btn.disabled = false;
-        btn.innerText = "Checkout";
-      }
-    });
-
-    renderProducts();
-    renderCart();
+    updateCount();
   </script>
 </body>
 </html>
