@@ -1,150 +1,459 @@
+
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Check oUt — We Value Our Customers Like Family</title>
-  <link rel="icon" type="image/png" href="logo.png" />
-  <meta property="og:title" content="Check oUt — We Value Our Customers Like Family" />
-  <meta property="og:description" content="ফ্রেশ রেডি-টু-কুক চিংড়ি ও বিশ্বস্ত পণ্য — সরাসরি অর্ডার করুন।" />
-  <meta property="og:image" content="https://checkoutbd.github.io/checkOut-/logo.png" />
-  <style>
-    * { box-sizing: border-box; font-family: Arial, sans-serif; }
-    body { margin: 0; background: #f5f6f8; color: #1e293b; padding-bottom: 40px; }
-    header {
-      background: #ffffff;
-      border-bottom: 1px solid #e2e8f0;
-      padding: 12px 16px;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-    .header-inner {
-      max-width: 720px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-    }
-    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; }
-    .brand img {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid #15803d;
-    }
-    .brand-title { font-size: 18px; font-weight: bold; color: #14532d; margin: 0; }
-    .brand-sub { font-size: 11px; color: #64748b; margin: 2px 0 0; }
-    .go-order-btn {
-      background: #dc2626;
-      color: #fff;
-      text-decoration: none;
-      padding: 9px 14px;
-      border-radius: 8px;
-      font-size: 13px;
-      font-weight: bold;
-      white-space: nowrap;
-    }
-    .container { max-width: 720px; margin: 16px auto; padding: 0 12px; }
-    .card {
-      background: #fff;
-      border: 1px solid #e2e8f0;
-      border-radius: 10px;
-      padding: 14px;
-      margin-bottom: 12px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-    }
-    .prod-name { font-weight: bold; font-size: 15px; margin: 0 0 4px; }
-    .prod-price { color: #dc2626; font-weight: bold; font-size: 14px; }
-    .btn {
-      background: #15803d;
-      color: #fff;
-      border: none;
-      padding: 8px 12px;
-      border-radius: 6px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .order-now-btn {
-      background: #dc2626;
-      color: #fff;
-      border: none;
-      padding: 8px 12px;
-      border-radius: 6px;
-      font-weight: bold;
-      cursor: pointer;
-      margin-left: 6px;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CHECK OUT BD | Safe Food</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f7f9f5;
+    color: #26352b;
+    line-height: 1.7;
+}
+
+header {
+    background: #123d2b;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.logo {
+    width: 110px;
+    height: 110px;
+    object-fit: contain;
+    background: white;
+    border-radius: 50%;
+    padding: 5px;
+    margin-bottom: 8px;
+}
+
+header h1 {
+    font-size: 29px;
+    letter-spacing: 2px;
+}
+
+header p {
+    color: #d7e8d9;
+}
+
+.hero {
+    text-align: center;
+    padding: 65px 20px;
+    background: linear-gradient(135deg,#e5f1df,#ffffff);
+}
+
+.hero h2 {
+    font-size: 30px;
+    color: #16452e;
+    margin-bottom: 12px;
+}
+
+.hero h3 {
+    color: #37834d;
+    font-size: 23px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    max-width: 650px;
+    margin: auto;
+}
+
+.mission {
+    text-align: center;
+    padding: 35px 20px;
+    max-width: 850px;
+    margin: auto;
+}
+
+.mission h2, .products h2, .order h2 {
+    color: #16452e;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.products {
+    padding: 35px 15px;
+}
+
+.product-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+    gap: 20px;
+    max-width: 850px;
+    margin: auto;
+}
+
+.product-card {
+    background: white;
+    border-radius: 14px;
+    padding: 23px;
+    box-shadow: 0 4px 15px #00000012;
+    border: 1px solid #e5e9e3;
+}
+
+.product-card h3 {
+    color: #16452e;
+    font-size: 21px;
+}
+
+.zone {
+    color: #777;
+    margin-bottom: 15px;
+}
+
+.price-list {
+    list-style: none;
+    margin: 15px 0;
+}
+
+.price-list li {
+    border-bottom: 1px solid #eee;
+    padding: 8px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.price {
+    font-weight: bold;
+    color: #24723c;
+}
+
+button {
+    border: none;
+    background: #23713d;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 7px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    background: #16452e;
+}
+
+.order {
+    background: #edf4eb;
+    padding: 40px 15px;
+}
+
+.order-form {
+    background: white;
+    max-width: 650px;
+    margin: auto;
+    padding: 25px;
+    border-radius: 13px;
+    box-shadow: 0 4px 15px #00000010;
+}
+
+label {
+    display: block;
+    margin-top: 13px;
+    font-weight: bold;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #d5ddd5;
+    border-radius: 6px;
+    font-size: 15px;
+    background: white;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.submit-btn {
+    margin-top: 20px;
+    background: #16834c;
+}
+
+.contact {
+    text-align: center;
+    padding: 30px 15px;
+}
+
+.contact a {
+    display: inline-block;
+    margin: 8px;
+    color: #23713d;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+footer {
+    background: #123d2b;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+}
+
+@media(max-width:480px) {
+    .hero h2 {font-size: 25px;}
+    header h1 {font-size: 25px;}
+    .order-form {padding: 18px;}
+}
+</style>
 </head>
+
 <body>
-  <header>
-    <div class="header-inner">
-      <a class="brand" href="index.html">
-        <img src="logo.png" alt="Check oUt Logo" onerror="this.style.display='none'" />
-        <div>
-          <p class="brand-title">Check oUt</p>
-          <p class="brand-sub">We Value Our Customers Like Family</p>
+
+<header>
+    <!-- Logo file must be in the same folder as index.html -->
+    <img src="logo.png" alt="CHECK OUT BD Logo" class="logo">
+    <h1>CHECK OUT BD</h1>
+    <p>We Value Our Customers Like Family Members</p>
+</header>
+
+<section class="hero">
+    <h2>We Value Our Customers Like Family</h2>
+    <h3>We Produce Safe Food</h3>
+    <p>
+        আমরা দিচ্ছি একেবারে অথেনটিক জায়গা থেকে
+        সোর্সিংয়ের মাধ্যমে ভেজালমুক্ত ফুড প্রোডাক্ট,
+        যা আপনাকে সুস্থ ও সুন্দর জীবনযাপনে সাহায্য করবে।
+    </p>
+</section>
+
+<section class="mission">
+    <h2>Our Mission</h2>
+    <p>
+        আমাদের লক্ষ্য হলো নির্ভরযোগ্য উৎস থেকে
+        নিরাপদ ও মানসম্মত খাবার সরাসরি আপনার কাছে পৌঁছে দেওয়া।
+        গ্রাহকের বিশ্বাস ও সন্তুষ্টিই আমাদের অগ্রাধিকার।
+    </p>
+</section>
+
+<section class="products">
+    <h2>Our Products</h2>
+
+    <div class="product-container">
+
+        <div class="product-card">
+            <h3>Ready To Cook Shrimp</h3>
+            <p class="zone">Zone: Satkhira</p>
+
+            <ul class="price-list">
+                <li>250 Gram <span class="price">৳280</span></li>
+                <li>500 Gram <span class="price">৳550</span></li>
+                <li>1 KG <span class="price">৳1100</span></li>
+            </ul>
+
+            <button onclick="selectProduct('Ready To Cook Shrimp')">
+                Order Now
+            </button>
         </div>
-      </a>
-      <a class="go-order-btn" href="order.html">অর্ডার পেজ (<span id="cartCount">0</span>)</a>
-    </div>
-  </header>
 
-  <div class="container">
-    <!-- উদাহরণ প্রোডাক্ট কার্ড — নিজের পণ্য অনুযায়ী নাম ও দাম বদলে নেবেন -->
-    <div class="card">
-      <div>
-        <p class="prod-name">বাগদা চিংড়ি (রেডি-টু-কুক)</p>
-        <div class="prod-price">৳850 / কেজি</div>
-      </div>
-      <div>
-        <button class="btn" onclick="addToCart('বাগদা চিংড়ি', 850)">কার্টে নিন</button>
-        <button class="order-now-btn" onclick="orderDirect('বাগদা চিংড়ি', 850)">অর্ডার</button>
-      </div>
-    </div>
+        <div class="product-card">
+            <h3>Ready To Cook Bagda Shrimp</h3>
+            <p class="zone">Zone: Satkhira</p>
 
-    <div class="card">
-      <div>
-        <p class="prod-name">ছাটি / গলদা চিংড়ি</p>
-        <div class="prod-price">৳950 / কেজি</div>
-      </div>
-      <div>
-        <button class="btn" onclick="addToCart('ছাটি / গলদা চিংড়ি', 950)">কার্টে নিন</button>
-        <button class="order-now-btn" onclick="orderDirect('ছাটি / গলদা চিংড়ি', 950)">অর্ডার</button>
-      </div>
-    </div>
-  </div>
+            <ul class="price-list">
+                <li>250 Gram <span class="price">৳290</span></li>
+                <li>500 Gram <span class="price">৳580</span></li>
+                <li>1 KG <span class="price">৳1160</span></li>
+            </ul>
 
-  <script>
-    function getCart() {
-      return JSON.parse(localStorage.getItem("checkout_cart") || "[]");
+            <button onclick="selectProduct('Ready To Cook Bagda Shrimp')">
+                Order Now
+            </button>
+        </div>
+
+    </div>
+</section>
+
+<section class="order" id="order">
+    <h2>Place Your Order</h2>
+
+    <div class="order-form">
+
+        <form id="orderForm">
+
+            <label>Selected Product</label>
+            <select id="product" required>
+                <option value="">Select Product</option>
+                <option value="Ready To Cook Shrimp">Ready To Cook Shrimp</option>
+                <option value="Ready To Cook Bagda Shrimp">Ready To Cook Bagda Shrimp</option>
+            </select>
+
+            <label>Quantity</label>
+            <select id="quantity" required>
+                <option value="">Select Quantity</option>
+                <option value="250 Gram">250 Gram</option>
+                <option value="500 Gram">500 Gram</option>
+                <option value="1 KG">1 KG</option>
+            </select>
+
+            <label>Customer Name</label>
+            <input type="text" id="name" placeholder="Enter Your Full Name" required>
+
+            <label>Mobile Number</label>
+            <input type="tel" id="phone" placeholder="01XXXXXXXXX" required>
+
+            <label>Division</label>
+            <select id="division" required>
+                <option value="">Select Division</option>
+            </select>
+
+            <label>District</label>
+            <select id="district" required disabled>
+                <option value="">Select District</option>
+            </select>
+
+            <label>Full Delivery Address</label>
+            <textarea id="address" rows="3"
+                placeholder="House, Road, Area, Thana etc." required></textarea>
+
+            <label>Additional Note (Optional)</label>
+            <textarea id="note" rows="2"
+                placeholder="Any special instructions?"></textarea>
+
+            <button type="submit" class="submit-btn">
+                Submit Order via WhatsApp
+            </button>
+
+        </form>
+    </div>
+</section>
+
+<section class="contact">
+    <h2>Contact Us</h2>
+    <p>WhatsApp: 01792103563</p>
+
+    <a href="https://wa.me/8801792103563" target="_blank">
+        WhatsApp Us
+    </a>
+
+    <a href="https://www.facebook.com/profile.php?id=61585966142391"
+       target="_blank">
+        Facebook Page
+    </a>
+</section>
+
+<footer>
+    <p>CHECK OUT BD</p>
+    <p>We Value Our Customers Like Family Members.</p>
+    <p>© 2026 CHECK OUT BD. All Rights Reserved.</p>
+</footer>
+
+<script>
+
+// Bangladesh Division and Districts
+
+const locations = {
+    "Dhaka": ["Dhaka","Faridpur","Gazipur","Gopalganj","Kishoreganj","Madaripur","Manikganj","Munshiganj","Narayanganj","Narsingdi","Rajbari","Shariatpur","Tangail"],
+    "Chattogram": ["Bandarban","Brahmanbaria","Chandpur","Chattogram","Cumilla","Cox's Bazar","Feni","Khagrachhari","Lakshmipur","Noakhali","Rangamati"],
+    "Rajshahi": ["Bogura","Joypurhat","Naogaon","Natore","Chapainawabganj","Pabna","Rajshahi","Sirajganj"],
+    "Khulna": ["Bagerhat","Chuadanga","Jashore","Jhenaidah","Khulna","Kushtia","Magura","Meherpur","Narail","Satkhira"],
+    "Barishal": ["Barguna","Barishal","Bhola","Jhalokathi","Patuakhali","Pirojpur"],
+    "Sylhet": ["Habiganj","Moulvibazar","Sunamganj","Sylhet"],
+    "Rangpur": ["Dinajpur","Gaibandha","Kurigram","Lalmonirhat","Nilphamari","Panchagarh","Rangpur","Thakurgaon"],
+    "Mymensingh": ["Jamalpur","Mymensingh","Netrokona","Sherpur"]
+};
+
+const division = document.getElementById("division");
+const district = document.getElementById("district");
+
+Object.keys(locations).forEach(div => {
+    let option = document.createElement("option");
+    option.value = div;
+    option.textContent = div;
+    division.appendChild(option);
+});
+
+division.addEventListener("change", function() {
+    district.innerHTML = '<option value="">Select District</option>';
+
+    if (this.value) {
+        district.disabled = false;
+
+        locations[this.value].forEach(dist => {
+            let option = document.createElement("option");
+            option.value = dist;
+            option.textContent = dist;
+            district.appendChild(option);
+        });
+    } else {
+        district.disabled = true;
     }
-    function saveCart(cart) {
-      localStorage.setItem("checkout_cart", JSON.stringify(cart));
-      updateCount();
-    }
-    function updateCount() {
-      const totalQty = getCart().reduce((sum, item) => sum + item.qty, 0);
-      document.getElementById("cartCount").textContent = totalQty;
-    }
-    function addToCart(name, price) {
-      const cart = getCart();
-      const found = cart.find(i => i.name === name);
-      if (found) found.qty += 1;
-      else cart.push({ name, price, qty: 1 });
-      saveCart(cart);
-    }
-    function orderDirect(name, price) {
-      saveCart([{ name, price, qty: 1 }]);
-      window.location.href = "order.html";
-    }
-    updateCount();
-  </script>
+});
+
+// Select product from product card
+
+function selectProduct(productName) {
+    document.getElementById("product").value = productName;
+    document.getElementById("order").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+// Submit order to WhatsApp
+
+document.getElementById("orderForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const product = document.getElementById("product").value;
+    const quantity = document.getElementById("quantity").value;
+    const name = document.getElementById("name").value;
+    const phone = document.getElementById("phone").value;
+    const division = document.getElementById("division").value;
+    const district = document.getElementById("district").value;
+    const address = document.getElementById("address").value;
+    const note = document.getElementById("note").value;
+
+    const prices = {
+        "Ready To Cook Shrimp": {
+            "250 Gram": 280,
+            "500 Gram": 550,
+            "1 KG": 1100
+        },
+        "Ready To Cook Bagda Shrimp": {
+            "250 Gram": 290,
+            "500 Gram": 580,
+            "1 KG": 1160
+        }
+    };
+
+    const price = prices[product][quantity];
+
+    const message =
+`NEW ORDER - CHECK OUT BD
+
+Product: ${product}
+Quantity: ${quantity}
+Price: ৳${price}
+
+Customer Name: ${name}
+Mobile: ${phone}
+Division: ${division}
+District: ${district}
+Full Address: ${address}
+Additional Note: ${note || "None"}`;
+
+    const whatsappURL =
+        "https://wa.me/8801792103563?text=" +
+        encodeURIComponent(message);
+
+    window.open(whatsappURL, "_blank");
+});
+
+</script>
+
 </body>
 </html>
