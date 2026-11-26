@@ -32,6 +32,27 @@ footer{background:#0d2f1d;color:#e7efe4;text-align:center;padding:25px}footer b{
 @media(max-width:740px){.hero-grid{grid-template-columns:1fr;text-align:center}.hero p{margin:auto}.hero-logo img{width:220px}.actions{justify-content:center}.cards{grid-template-columns:1fr}nav{gap:12px;font-size:12px}}
 @media(max-width:480px){nav a:not(.nav-cta){display:none}.brand img{width:50px;height:50px}.brand b{font-size:17px}.grid{grid-template-columns:1fr}.field.full{grid-column:auto}.size-btn{padding:10px 2px}}
 </style>
+.price-summary{
+  background:#f1f5ed;
+  padding:18px;
+  border-radius:12px;
+  margin:18px 0;
+  border:1px solid #dce7d8;
+}
+.price-row{
+  display:flex;
+  justify-content:space-between;
+  padding:8px 0;
+  gap:10px;
+}
+.grand-total{
+  border-top:1px solid #d3dfce;
+  margin-top:8px;
+  padding-top:14px;
+  color:#153d2a;
+  font-size:19px;
+}
+
 </head>
 <body>
 <div class="top"><div class="wrap"><span>Authentic sourcing · Thoughtful food choices</span><span>WhatsApp: 01792103563</span></div></div>
@@ -53,7 +74,7 @@ footer{background:#0d2f1d;color:#e7efe4;text-align:center;padding:25px}footer b{
 <button class="size-btn" onclick="pick('Ready To Cook Shrimp',250,280,this)"><b>250g</b><span>৳280</span></button>
 <button class="size-btn" onclick="pick('Ready To Cook Shrimp',500,550,this)"><b>500g</b><span>৳550</span></button>
 <button class="size-btn" onclick="pick('Ready To Cook Shrimp',1000,1100,this)"><b>1 kg</b><span>৳1,100</span></button>
-</div><p class="choose-hint">উপরের প্যাক সাইজে চাপ দিলেই অর্ডার ফর্মে যুক্ত হবে।</p></article>
+</div><P class="choose-hint">উপরের প্যাক সাইজে চাপ দিলেই অর্ডার ফর্মে যুক্ত হবে।</p></article>
 <article class="card"><span class="tag">BAGDA • READY TO COOK</span><h3>Ready To Cook Bagda Shrimp</h3><p class="zone">Zone: Satkhira</p>
 <div class="size-grid">
 <button class="size-btn" onclick="pick('Ready To Cook Bagda Shrimp',250,290,this)"><b>250g</b><span>৳290</span></button>
@@ -72,7 +93,22 @@ footer{background:#0d2f1d;color:#e7efe4;text-align:center;padding:25px}footer b{
 <div class="field"><label>নির্বাচিত প্যাক সাইজ</label><input id="chosen-size" readonly placeholder="পণ্য থেকে সিলেক্ট করুন"></div>
 <div class="field full"><label for="address">সম্পূর্ণ ঠিকানা *</label><textarea id="address" required placeholder="বাসা/ফ্ল্যাট, রোড, এলাকা, থানা"></textarea></div>
 <div class="field full"><label for="note">অতিরিক্ত নির্দেশনা (ঐচ্ছিক)</label><textarea id="note" placeholder="বিশেষ কোনো নির্দেশনা থাকলে লিখুন"></textarea></div>
-</div><div class="total"><span>Order total</span><strong id="total">৳0</strong></div>
+</div>
+<div class="price-summary">
+  <div class="price-row">
+    <span>Product Price</span>
+    <span id="productPrice">৳0</span>
+  </div>
+  <div class="price-row">
+    <span>Delivery Charge (Inside Dhaka)</span>
+    <span>৳80</span>
+  </div>
+  <div class="price-row grand-total">
+    <strong>Grand Total</strong>
+    <strong id="total">৳80</strong>
+  </div>
+</div>
+  class="total"><span>Order total</span><strong id="total">৳0</strong></div>
 <button class="btn submit" type="submit">Confirm Order on WhatsApp</button><p class="hint">WhatsApp খোলার পর অর্ডারের তথ্য দেখে Send করুন।</p>
 </form></div></div></section>
 <section class="contact" id="contact"><div class="wrap"><div class="head"><span class="kicker">WE ARE HERE TO HELP</span><h2>Get in Touch</h2><p>প্রশ্ন বা অর্ডারের জন্য যোগাযোগ করুন।</p></div><div class="contact-links"><a class="btn" href="https://wa.me/8801792103563" target="_blank">WhatsApp: 01792103563</a><a class="btn outline" href="https://www.facebook.com/profile.php?id=61585966142391" target="_blank">Facebook Page</a></div></div></section>
@@ -84,9 +120,14 @@ Object.keys(locations).forEach(x=>division.add(new Option(x,x)));
 division.addEventListener('change',()=>{district.innerHTML='<option value="">জেলা নির্বাচন করুন</option>';(locations[division.value]||[]).forEach(x=>district.add(new Option(x,x)));district.disabled=!division.value;});
 let chosen=null;
 function pick(product,grams,price,button){chosen={product,grams,price};document.querySelectorAll('.size-btn').forEach(b=>b.classList.remove('selected'));button.classList.add('selected');document.getElementById('chosen-size').value=grams===1000?'1 KG':grams+' Gram';update();document.getElementById('order').scrollIntoView({behavior:'smooth'});}
-function update(){let q=Math.max(1,Number(document.getElementById('qty').value)||1);document.getElementById('total').textContent='৳'+(chosen?chosen.price*q:0).toLocaleString('en-IN');document.getElementById('summary').innerHTML='<b>Selected product:</b> '+(chosen?chosen.product+' · '+(chosen.grams===1000?'1 KG':chosen.grams+' Gram')+' · ৳'+chosen.price:'পণ্য থেকে প্যাক সাইজ নির্বাচন করুন।');}
-document.getElementById('qty').addEventListener('input',update);
-document.getElementById('form').addEventListener('submit',e=>{e.preventDefault();if(!chosen){alert('অনুগ্রহ করে প্রোডাক্ট থেকে ২৫০ গ্রাম, ৫০০ গ্রাম অথবা ১ কেজি নির্বাচন করুন।');document.getElementById('products').scrollIntoView({behavior:'smooth'});return;}
-let q=Number(document.getElementById('qty').value);let msg=`CHECK OUT BD - NEW ORDER\n\nProduct: ${chosen.product}\nPack size: ${chosen.grams===1000?'1 KG':chosen.grams+' Gram'}\nPackets: ${q}\nTotal: ৳${chosen.price*q}\n\nName: ${document.getElementById('name').value}\nPhone: ${document.getElementById('phone').value}\nDivision: ${division.value}\nDistrict: ${district.value}\nAddress: ${document.getElementById('address').value}\nNote: ${document.getElementById('note').value||'None'}`;
-window.open('https://wa.me/8801792103563?text='+encodeURIComponent(msg),'_blank');});
-</script></body></html>
+
+function update(){
+  let q=Math.max(1,Number(document.getElementById('qty').value)||1);
+  let productAmount=chosen ? chosen.price*q : 0;
+  let totalAmount=productAmount+80;
+
+  document.getElementById('productPrice').textContent='৳'+productAmount;
+  document.getElementById('total').textContent='৳'+totalAmount;
+  document.getElementById('summary').textContent=
+    chosen ? 'Selected: '+chosen.product : 'পণ্য নির্বাচন করুন';
+}
